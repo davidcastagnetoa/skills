@@ -1,9 +1,6 @@
 ---
 name: fastapi
 description: Framework async de alto rendimiento para exponer endpoints REST en el orquestador
-type: Framework
-priority: Esencial
-mode: Self-hosted
 ---
 
 # fastapi
