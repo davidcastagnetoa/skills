@@ -1,9 +1,6 @@
 ---
 name: copy_move_forgery_detection
 description: Detectar regiones clonadas dentro del documento — foto pegada sobre otra foto o texto duplicado
-type: Algorithm
-priority: Esencial
-mode: Self-hosted
 ---
 
 # copy_move_forgery_detection
