@@ -1,0 +1,102 @@
+[project]
+name = "verifid"
+version = "0.1.0"
+description = "Identity Verification System (KYC)"
+requires-python = ">=3.12"
+dependencies = [
+    # Web framework
+    "fastapi>=0.115.0",
+    "uvicorn[standard]>=0.32.0",
+    # Database
+    "sqlalchemy[asyncio]>=2.0.36",
+    "asyncpg>=0.30.0",
+    "alembic>=1.14.0",
+    # Redis
+    "redis[hiredis]>=5.2.0",
+    # Task queue
+    "celery[redis]>=5.4.0",
+    # Validation & serialization
+    "pydantic>=2.10.0",
+    "pydantic-settings>=2.6.0",
+    # Logging
+    "structlog>=24.4.0",
+    # HTTP client
+    "httpx>=0.28.0",
+    # Object storage
+    "minio>=7.2.0",
+    # Security
+    "python-jose[cryptography]>=3.3.0",
+    "passlib[bcrypt]>=1.7.4",
+    # Utilities
+    "python-multipart>=0.0.12",
+    "orjson>=3.10.0",
+]
+
+[project.optional-dependencies]
+ml = [
+    # ML inference
+    "onnxruntime>=1.20.0",
+    "numpy>=1.26.0",
+    # Computer vision
+    "opencv-python-headless>=4.10.0",
+    "Pillow>=11.0.0",
+    "scikit-image>=0.24.0",
+    # Face detection & recognition
+    "insightface>=0.7.3",
+    "mediapipe>=0.10.18",
+    # OCR
+    "paddleocr>=2.9.0",
+    "easyocr>=1.7.0",
+    # Anti-fraud
+    "presidio-analyzer>=2.2.0",
+    "presidio-anonymizer>=2.2.0",
+    "geoip2>=4.8.0",
+]
+dev = [
+    # Testing
+    "pytest>=8.3.0",
+    "pytest-asyncio>=0.24.0",
+    "pytest-cov>=6.0.0",
+    "pytest-xdist>=3.5.0",
+    "testcontainers>=4.8.0",
+    "factory-boy>=3.3.0",
+    # Linting & formatting
+    "ruff>=0.8.0",
+    "mypy>=1.13.0",
+    # Type stubs
+    "types-redis>=4.6.0",
+    "sqlalchemy-stubs>=0.4",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+addopts = "-v --tb=short"
+
+[tool.ruff]
+target-version = "py312"
+line-length = 120
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "N", "UP", "S", "B", "A", "C4", "SIM", "TCH"]
+ignore = ["S101"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["backend"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+plugins = ["pydantic.mypy"]
+
+[tool.coverage.run]
+source = ["backend"]
+omit = ["backend/tests/*", "backend/alembic/*"]
+
+[tool.coverage.report]
+fail_under = 80
+show_missing = true

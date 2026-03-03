@@ -38,3 +38,11 @@ Las skills faltantes son:
 
 - architecture_agent (1)
   - adr_tools (separada de adr_framework)
+
+---
+
+guarda el plan en uno o varios archivos markdown, debido a las restrincciones y al limite diario, hazlo por partes de tal forma que se pueda continuar en caso de /rate-limit-options - out of extra usage
+
+---
+
+Debido al limite diario te has quedado en Phase 2.2: Document processing module , Continua

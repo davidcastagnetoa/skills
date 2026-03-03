@@ -1,11 +1,77 @@
+# Existing
 231_list_skills.md
 18_List_Agents.md
-CLAUDE.md
-Agents.md
 .DS_Store
 .agent
 .agents
-.claude
 .trae
 skills-lock.json
 list_skills/*
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# ML Models (download via script, don't commit)
+models/*.onnx
+models/*.pt
+models/*.pth
+models/*.bin
+models/*.pkl
+models/**/*.onnx
+models/**/*.pt
+!models/.gitkeep
+
+# OS
+Thumbs.db
+
+# Docker
+docker-compose.override.yml
+
+# Test / Coverage
+.coverage
+htmlcov/
+.pytest_cache/
+.mypy_cache/
+
+# Logs
+*.log
+logs/
+
+# MinIO data
+minio-data/
+
+# PostgreSQL data
+pg-data/
+
+# Redis data
+redis-data/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# K8s secrets
+infra/k8s/overlays/*/secrets.yaml

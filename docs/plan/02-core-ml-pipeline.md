@@ -15,7 +15,7 @@
 
 ### Tareas
 
-- [ ] Crear `scripts/download-models.sh` que descargue todos los modelos necesarios:
+- [x] Crear `scripts/download-models.sh` que descargue todos los modelos necesarios:
   ```
   models/
   ├── face_detection/
@@ -39,11 +39,11 @@
       └── xceptionnet_ff.onnx          # Detector de deepfakes
   ```
 
-- [ ] Crear `models/checksums.json` con SHA256 de cada modelo para verificar integridad.
+- [x] Crear `models/checksums.json` con SHA256 de cada modelo para verificar integridad.
 
-- [ ] Agregar `models/` al `.gitignore` (modelos se descargan, no se commitean).
+- [x] Agregar `models/` al `.gitignore` (modelos se descargan, no se commitean).
 
-- [ ] Crear base class para model loading con warm-up:
+- [x] Crear base class para model loading con warm-up:
   ```python
   class BaseMLModel:
       def __init__(self, model_path: str):
