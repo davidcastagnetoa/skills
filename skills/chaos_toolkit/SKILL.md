@@ -31,4 +31,4 @@ Usar en entornos de staging antes de releases importantes para validar la resili
 
 - Comenzar con experimentos simples (matar un pod, agregar latencia) antes de avanzar a escenarios complejos (partición de red, corrupción de datos).
 - Cada experimento debe incluir rollbacks automáticos que restauren el estado normal del entorno de staging.
-- Los experimentos de caos deben ejecutarse en ventanas de mantenimiento programadas y con monitorización activa del equipo.
+- Los experimentos de caos deben ejecutarse en ventanas de mantenimiento programadas y con monitorización activa del equipo
