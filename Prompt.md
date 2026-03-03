@@ -11,92 +11,92 @@ Aun no escribas codigo, primero quiero definidir el proceso que se llevara paso 
 
 ---
 
-Debido al limite diario, no has creado todas las skilles necesarias. Crea las skilles faltantes en la carpeta `pending_skills`. la skill `pending_skills/worker_pool_agent/celery_flower.md` quedo a medias, por favor revisa y completa la skill.
+Debido al limite diario, no has creado todas las skilles necesarias. Crea las skilles faltantes en la carpeta `pending_skills`. Cuando termines de crear las skilles faltantes. pasamos los siguientes pasos :
+
+- 4. Indicarme como crear los agentes o hacerlo tu mismo (tanto los agentes como las skilles son locales, es decir solo para el proyecto actual) NO GLOBALES.
+- 5. Una vez disponga de las skilles y los agentes indicame como iniciar el desarrollo del proyecto.
+
+Recuerda: NO respondas todas las peticiones a la vez, en cuanto acabes una pide confirmacion para la siguiente.
+Aun no escribas codigo, primero quiero definidir el proceso que se llevara paso a paso (genera un plan de desarrollo detallado cuando ya se dispongan de todas las skiles y agentes necesarios).
 
 Las skills faltantes son:
 
-- antifraud_agent (4)
-  - blacklist_db
-  - dex_mivolo_age_estimator
-  - geoip2_maxmind
-  - vpn_proxy_tor_detection
+- api_gateway_agent (4)
+  - trace_id_propagation
+  - prometheus_metrics_exporter
+  - nginx_lua (separada de traefik)
+  - traefik (separada de nginx)
 
-- api_gateway_agent (8)
-  - api_key_management
-  - graceful_degradation
-  - gzip_brotli_compression
-  - http2_support
-  - request_timeout_management
-  - retry_exponential_backoff
-  - tls_1_3_termination
-  - traefik
+- worker_pool_agent (6)
+  - dead_letter_queue
+  - prefetch_multiplier_tuning
+  - celery (separada de celery_redis)
+  - redis_broker (separada de celery_redis)
+  - rabbitmq_broker (alternativa separada)
+  - celery_flower (separada)
 
-- architecture_agent (15)
-  - archunit_import_linter
-  - breaking_change_detector
-  - chaos_toolkit
-  - coupling_cohesion_metrics
-  - datamodel_code_generator
-  - dependabot_renovate
-  - dependency_graph_analysis
-  - drawio
-  - json_schema_evolution
-  - k6
-  - plantuml_mermaid
-  - pydantic_schema_registry
-  - pytest_cov
-  - technical_debt_backlog
-  - technology_radar
+- model_server_agent (13)
+  - torchserve
+  - onnx_runtime
+  - fp16_int8_quantization
+  - onnx_model_export
+  - grpc_server
+  - model_versioning
+  - ab_model_routing
+  - model_drift_detection
+  - gpu_utilization_monitoring
+  - dynamic_batching_triton
+  - triton_inference_server (separada)
+  - tensorrt (separada de tensorrt_onnx)
+  - onnx_runtime (separada de tensorrt_onnx)
 
-- cache_agent (9)
-  - cache_invalidation
-  - cache_stampede_prevention
-  - keyspace_notifications
-  - lru_eviction_policy
-  - redis_7
-  - redis_cluster
-  - redis_persistence
-  - redis_py_async
-  - ttl_management
+- health_monitor_agent (9)
+  - http_health_check_probes
+  - deep_health_check
+  - tenacity
+  - kubernetes_liveness_readiness_probes
+  - kubernetes_hpa
+  - alertmanager
+  - watchdog_supervisor
+  - slo_error_budget_tracking
+  - chaos_engineering (separada de chaos_toolkit)
 
-- capture_agent (1)
-  - camerax_avfoundation
+- observability_agent (17)
+  - prometheus_client
+  - alertmanager (separada de prometheus)
+  - node_exporter
+  - dcgm_exporter
+  - thanos
+  - grafana_tempo
+  - w3c_trace_context
+  - trace_sampling
+  - grafana_loki
+  - promtail_vector
+  - elk_stack
+  - log_correlation
+  - log_retention_policies
+  - prometheus (separada de prometheus_grafana)
+  - grafana (separada de prometheus_grafana)
+  - opentelemetry_sdk (separada de opentelemetry_jaeger)
+  - jaeger (separada de opentelemetry_jaeger)
 
-- decision_agent (3)
-  - decision_explainer
-  - human_review_queue
-  - weighted_score_aggregator
+- database_agent (14)
+  - postgresql_16
+  - asyncpg (separada de pgbouncer_asyncpg)
+  - pgbouncer (separada de pgbouncer_asyncpg)
+  - sqlalchemy_async (separada de postgresql_sqlalchemy_async)
+  - postgresql (separada de postgresql_sqlalchemy_async)
+  - alembic
+  - patroni
+  - pg_stat_statements
+  - table_partitioning
+  - connection_pool_sizing
+  - pgbackrest
+  - minio_server_side_encryption
+  - minio_lifecycle_policies
+  - minio_distributed_mode
 
-- document_processor_agent (1)
-  - font_consistency_analyzer
-
-- face_match_agent (2)
-  - age_progression_compensation
-  - deepface_framework
-
-- liveness_agent (5)
-  - compression_artifact_analysis
-  - midas_depth_estimation
-  - rppg_pulse_detection
-  - smile_expression_detector
-  - xceptionnet_gan_detector
-
-- ocr_agent (5)
-  - aws_textract
-  - easyocr
-  - google_vision_ocr
-  - regex_data_normalizer
-  - tesseract_ocr
-
-- orchestrator_agent (1)
-  - uuid_v4
-
-- worker_pool_agent (8)
-  - celery
-  - celery_flower
-  - cuda_streams
-  - dynamic_batching
-  - model_warmup
-  - multiprocessing_pool
-  - rabbitmq_broker
-  - redis_broker
+- architecture_agent (3)
+  - c4_model (separada de c4_model_structurizr)
+  - structurizr_dsl (separada de c4_model_structurizr)
+  - adr_tools (separada de adr_framework)
