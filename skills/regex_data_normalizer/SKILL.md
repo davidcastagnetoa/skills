@@ -1,6 +1,9 @@
 ---
 name: regex_data_normalizer
 description: Normalizar fechas, nombres y números de documento a formato estándar
+type: Algorithm
+priority: Esencial
+mode: Self-hosted
 ---
 
 # regex_data_normalizer

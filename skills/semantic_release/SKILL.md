@@ -1,6 +1,9 @@
 ---
 name: semantic_release
 description: Versionar automáticamente el proyecto basándose en los commits convencionales
+type: Tool
+priority: Recomendada
+mode: Self-hosted
 ---
 
 # semantic_release

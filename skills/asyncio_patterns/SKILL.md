@@ -1,6 +1,9 @@
 ---
 name: asyncio_patterns
 description: Patrones de concurrencia async para ejecutar agentes en paralelo dentro del pipeline KYC
+type: Library
+priority: Esencial
+mode: Self-hosted
 ---
 
 # asyncio_patterns

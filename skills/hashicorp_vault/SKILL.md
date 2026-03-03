@@ -1,6 +1,9 @@
 ---
 name: hashicorp_vault
 description: Gestor centralizado de secretos con auditoría, rotación automática y lease management
+type: Tool
+priority: Esencial
+mode: Self-hosted
 ---
 
 # hashicorp_vault

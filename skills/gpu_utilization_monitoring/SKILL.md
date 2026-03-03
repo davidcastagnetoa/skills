@@ -1,6 +1,9 @@
 ---
 name: gpu_utilization_monitoring
 description: Monitorizar uso de GPU de workers de inferencia ML para optimizar recursos y detectar cuellos de botella
+type: Tool
+priority: Esencial
+mode: Self-hosted
 ---
 
 # gpu_utilization_monitoring

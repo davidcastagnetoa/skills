@@ -1,6 +1,9 @@
 ---
 name: graceful_degradation
 description: Devolver respuesta parcial si un servicio no crítico no está disponible
+type: Algorithm
+priority: Recomendada
+mode: Self-hosted
 ---
 
 # graceful_degradation

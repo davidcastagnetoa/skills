@@ -1,6 +1,9 @@
 ---
 name: coupling_cohesion_metrics
 description: Medir acoplamiento entre módulos y cohesión interna para detectar degradación arquitectónica
+type: Algorithm
+priority: Recomendada
+mode: Self-hosted
 ---
 
 # coupling_cohesion_metrics

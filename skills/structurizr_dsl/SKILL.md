@@ -1,6 +1,9 @@
 ---
 name: structurizr_dsl
 description: Structurizr DSL para definir diagramas C4 como código versionable en el proyecto KYC
+type: Tool
+priority: Esencial
+mode: Self-hosted
 ---
 
 # structurizr_dsl

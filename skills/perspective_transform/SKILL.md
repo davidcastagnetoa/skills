@@ -1,6 +1,9 @@
 ---
 name: perspective_transform
 description: Corrección de perspectiva del documento fotografiado en ángulo mediante transformación homográfica
+type: Algorithm
+priority: Esencial
+mode: Self-hosted
 ---
 
 # perspective_transform

@@ -1,6 +1,9 @@
 ---
 name: traefik
-description: "Reverse proxy moderno con autodiscovery nativo en Kubernetes y Let's Encrypt"
+description: Reverse proxy moderno con autodiscovery nativo en Kubernetes y Let's Encrypt
+type: Tool
+priority: Recomendada
+mode: Self-hosted"
 ---
 
 # traefik

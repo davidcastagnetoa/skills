@@ -1,6 +1,9 @@
 ---
 name: bandit_pip_audit
 description: Análisis de seguridad estático del código Python y escaneo de dependencias en busca de CVEs
+type: Tool
+priority: Esencial
+mode: Self-hosted
 ---
 
 # bandit_pip_audit

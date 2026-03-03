@@ -1,6 +1,9 @@
 ---
 name: model_versioning
 description: Gestión de versiones de modelos ML con registro, metadata y rollback sin downtime
+type: Algorithm
+priority: Esencial
+mode: Self-hosted
 ---
 
 # model_versioning

@@ -1,6 +1,9 @@
 ---
 name: tensorrt
 description: Compilación y optimización de modelos con TensorRT para máximo rendimiento en GPU NVIDIA
+type: Tool
+priority: Esencial
+mode: Self-hosted
 ---
 
 # tensorrt

@@ -1,6 +1,9 @@
 ---
 name: alertmanager_standalone
 description: Alertmanager independiente para routing de alertas del pipeline KYC con integraciones externas
+type: Tool
+priority: Esencial
+mode: Self-hosted
 ---
 
 # alertmanager_standalone
@@ -14,6 +17,7 @@ Usa esta skill cuando necesites configurar o gestionar Alertmanager como servici
 ## Instructions
 
 1. Desplegar Alertmanager como contenedor independiente en el cluster:
+
    ```yaml
    # docker-compose.alertmanager.yml
    services:
@@ -32,6 +36,7 @@ Usa esta skill cuando necesites configurar o gestionar Alertmanager como servici
    ```
 
 2. Configurar el routing de alertas con receptores diferenciados por severidad:
+
    ```yaml
    # alertmanager.yml
    global:
@@ -57,6 +62,7 @@ Usa esta skill cuando necesites configurar o gestionar Alertmanager como servici
    ```
 
 3. Configurar los receptores de PagerDuty para alertas criticas del pipeline:
+
    ```yaml
    receivers:
      - name: 'pagerduty-kyc'
@@ -70,6 +76,7 @@ Usa esta skill cuando necesites configurar o gestionar Alertmanager como servici
    ```
 
 4. Configurar el receptor de Slack para alertas de severidad warning:
+
    ```yaml
      - name: 'slack-default'
        slack_configs:
@@ -87,6 +94,7 @@ Usa esta skill cuando necesites configurar o gestionar Alertmanager como servici
    ```
 
 5. Definir reglas de inhibicion para evitar cascadas de alertas:
+
    ```yaml
    inhibit_rules:
      - source_match:
@@ -102,6 +110,7 @@ Usa esta skill cuando necesites configurar o gestionar Alertmanager como servici
    ```
 
 6. Definir las alerting rules en Prometheus apuntando al Alertmanager independiente:
+
    ```yaml
    # prometheus.yml
    alerting:
@@ -114,6 +123,7 @@ Usa esta skill cuando necesites configurar o gestionar Alertmanager como servici
    ```
 
 7. Crear reglas de alerta especificas para el pipeline KYC:
+
    ```yaml
    # kyc_alerts.yml
    groups:

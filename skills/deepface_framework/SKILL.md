@@ -1,6 +1,9 @@
 ---
 name: deepface_framework
 description: Wrapper que integra múltiples modelos faciales (ArcFace, FaceNet, VGG-Face, DeepID)
+type: Library
+priority: Recomendada
+mode: Self-hosted
 ---
 
 # deepface_framework

@@ -1,6 +1,9 @@
 ---
 name: hmac_sha256_session_hashing
 description: Hash de integridad por sesión para garantizar no-repudio e inmutabilidad del registro de auditoría
+type: Algorithm
+priority: Esencial
+mode: Self-hosted
 ---
 
 # hmac_sha256_session_hashing

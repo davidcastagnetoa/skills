@@ -1,6 +1,9 @@
 ---
 name: rabbitmq_broker
 description: Alternativa a Redis como broker con mejor routing y dead-letter queues
+type: Framework
+priority: Recomendada
+mode: Self-hosted
 ---
 
 # rabbitmq_broker

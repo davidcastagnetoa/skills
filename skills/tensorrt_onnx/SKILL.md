@@ -1,6 +1,9 @@
 ---
 name: tensorrt_onnx
 description: Compilación y cuantización de modelos para GPU NVIDIA — hasta 5x speedup sobre PyTorch nativo
+type: Tool
+priority: Esencial
+mode: Self-hosted
 ---
 
 # tensorrt_onnx

@@ -1,6 +1,9 @@
 ---
 name: access_log_json
 description: Log de cada petición al gateway con IP, endpoint, latencia, status code y trace_id para trazabilidad end-to-end
+type: Algorithm
+priority: Esencial
+mode: Self-hosted
 ---
 
 # access_log_json

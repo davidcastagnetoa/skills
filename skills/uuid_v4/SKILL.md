@@ -1,6 +1,9 @@
 ---
 name: uuid_v4
 description: Generación de session_id únicos e irrepetibles
+type: Algorithm
+priority: Esencial
+mode: Self-hosted
 ---
 
 # uuid_v4

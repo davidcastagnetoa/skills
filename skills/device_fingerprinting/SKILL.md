@@ -1,6 +1,9 @@
 ---
 name: device_fingerprinting
 description: Identificar dispositivo de forma única para detectar múltiples intentos de verificación fraudulentos
+type: Algorithm
+priority: Esencial
+mode: Self-hosted
 ---
 
 # device_fingerprinting

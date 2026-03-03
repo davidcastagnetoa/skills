@@ -1,6 +1,9 @@
 ---
 name: silent_face_anti_spoofing
 description: Modelo de liveness pasivo NUAA para detectar ataques de impresión, pantalla y spoofing sin interacción del usuario
+type: ML Model
+priority: Esencial
+mode: Self-hosted
 ---
 
 # silent_face_anti_spoofing

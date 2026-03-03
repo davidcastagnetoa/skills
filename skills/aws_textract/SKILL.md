@@ -1,6 +1,9 @@
 ---
 name: aws_textract
 description: Fallback cloud con soporte nativo para documentos de identidad
+type: API
+priority: Opcional
+mode: Cloud
 ---
 
 # aws_textract

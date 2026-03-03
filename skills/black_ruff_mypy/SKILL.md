@@ -1,6 +1,9 @@
 ---
 name: black_ruff_mypy
 description: Formateador, linter ultra-rápido y type checking estático para garantizar calidad del código Python
+type: Tool
+priority: Esencial
+mode: Self-hosted
 ---
 
 # black_ruff_mypy

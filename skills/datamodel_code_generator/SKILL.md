@@ -1,6 +1,9 @@
 ---
 name: datamodel_code_generator
 description: Generar modelos Pydantic a partir de OpenAPI/JSON Schema como fuente única de verdad
+type: Tool
+priority: Recomendada
+mode: Self-hosted
 ---
 
 # datamodel_code_generator

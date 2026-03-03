@@ -1,6 +1,9 @@
 ---
 name: opencv_capture
 description: Procesamiento de imagen con OpenCV para validación de calidad y detección de bordes
+type: Library
+priority: Esencial
+mode: Self-hosted
 ---
 
 # opencv_capture

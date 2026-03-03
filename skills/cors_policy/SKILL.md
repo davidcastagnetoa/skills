@@ -1,6 +1,9 @@
 ---
 name: cors_policy
 description: Control de orígenes permitidos para peticiones cross-origin desde el frontend
+type: Algorithm
+priority: Esencial
+mode: Self-hosted
 ---
 
 # cors_policy

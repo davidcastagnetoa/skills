@@ -1,6 +1,9 @@
 ---
 name: pgbouncer_asyncpg
 description: Connection pooling PostgreSQL con PgBouncer y cliente async asyncpg para alto rendimiento
+type: Tool
+priority: Esencial
+mode: Self-hosted
 ---
 
 # pgbouncer_asyncpg

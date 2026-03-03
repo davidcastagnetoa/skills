@@ -1,6 +1,9 @@
 ---
 name: kubernetes_liveness_readiness_probes
 description: Configuracion de probes de Kubernetes para pods del pipeline KYC con timeouts adaptados a servicios ML
+type: Tool
+priority: Esencial
+mode: Self-hosted
 ---
 
 # kubernetes_liveness_readiness_probes

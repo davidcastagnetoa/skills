@@ -1,6 +1,9 @@
 ---
 name: celery
 description: Framework de cola de tareas distribuido con soporte de prioridades
+type: Framework
+priority: Esencial
+mode: Self-hosted
 ---
 
 # celery

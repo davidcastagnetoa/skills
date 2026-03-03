@@ -1,6 +1,9 @@
 ---
 name: isolation_forest
 description: Detectar patrones de sesión inusuales (outliers) indicativos de fraude con Isolation Forest
+type: ML Model
+priority: Recomendada
+mode: Self-hosted
 ---
 
 # isolation_forest

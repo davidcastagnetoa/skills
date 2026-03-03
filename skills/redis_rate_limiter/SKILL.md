@@ -1,6 +1,9 @@
 ---
 name: redis_rate_limiter
 description: Control de intentos de verificación por IP/dispositivo/documento con ventana deslizante en Redis
+type: Library
+priority: Esencial
+mode: Self-hosted
 ---
 
 # redis_rate_limiter

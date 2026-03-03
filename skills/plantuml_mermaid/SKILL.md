@@ -1,6 +1,9 @@
 ---
 name: plantuml_mermaid
 description: Diagramas de secuencia flujo de datos y topología de despliegue como código
+type: Tool
+priority: Recomendada
+mode: Self-hosted
 ---
 
 # plantuml_mermaid

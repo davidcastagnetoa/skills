@@ -1,6 +1,9 @@
 ---
 name: sonarqube
 description: Análisis estático de código para detectar code smells, duplicación y cobertura de tests
+type: Tool
+priority: Recomendada
+mode: Self-hosted
 ---
 
 # sonarqube

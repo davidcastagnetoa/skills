@@ -1,6 +1,9 @@
 ---
 name: faceforensics_classifier
 description: Clasificador de deepfakes y face swaps entrenado en el dataset FaceForensics++
+type: ML Model
+priority: Esencial
+mode: Self-hosted
 ---
 
 # faceforensics_classifier

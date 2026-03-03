@@ -1,6 +1,9 @@
 ---
 name: pg_stat_statements
 description: Monitorización de queries lentas y optimización de rendimiento del pipeline KYC
+type: Tool
+priority: Recomendada
+mode: Self-hosted
 ---
 
 # pg_stat_statements

@@ -1,6 +1,9 @@
 ---
 name: head_pose_estimation
 description: Calcular orientación (yaw/pitch/roll) de la cabeza para el challenge de giro de cabeza
+type: Algorithm
+priority: Esencial
+mode: Self-hosted
 ---
 
 # head_pose_estimation

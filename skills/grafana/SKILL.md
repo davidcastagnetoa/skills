@@ -1,6 +1,9 @@
 ---
 name: grafana
 description: Grafana como plataforma de visualización de dashboards para métricas, logs y trazas del pipeline KYC.
+type: Tool
+priority: Esencial
+mode: Self-hosted
 ---
 
 # grafana

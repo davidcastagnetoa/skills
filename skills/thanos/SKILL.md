@@ -1,6 +1,9 @@
 ---
 name: thanos
 description: Almacenamiento a largo plazo de metricas Prometheus con alta disponibilidad y query global
+type: Tool
+priority: Opcional
+mode: Self-hosted
 ---
 
 # thanos

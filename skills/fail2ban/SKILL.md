@@ -1,6 +1,9 @@
 ---
 name: fail2ban
 description: Banear IPs automáticamente tras N intentos fallidos de autenticación o comportamiento abusivo
+type: Tool
+priority: Esencial
+mode: Self-hosted
 ---
 
 # fail2ban

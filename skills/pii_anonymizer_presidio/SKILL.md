@@ -1,6 +1,9 @@
 ---
 name: pii_anonymizer_presidio
 description: Detectar y enmascarar automáticamente datos personales en logs para cumplimiento GDPR
+type: Library
+priority: Esencial
+mode: Self-hosted
 ---
 
 # pii_anonymizer_presidio

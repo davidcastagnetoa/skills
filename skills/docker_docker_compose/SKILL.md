@@ -1,6 +1,9 @@
 ---
 name: docker_docker_compose
 description: Contenerización de todos los servicios y entorno de desarrollo local reproducible con Docker Compose
+type: Tool
+priority: Esencial
+mode: Self-hosted
 ---
 
 # docker_docker_compose

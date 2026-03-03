@@ -1,6 +1,9 @@
 ---
 name: realtime_user_feedback
 description: Overlay en pantalla con instrucciones en tiempo real para guiar al usuario durante la captura
+type: Framework
+priority: Recomendada
+mode: Self-hosted
 ---
 
 # realtime_user_feedback

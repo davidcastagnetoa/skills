@@ -1,6 +1,9 @@
 ---
 name: pytest_asyncio
 description: Framework de testing con soporte completo para código async, fixtures y parametrización
+type: Framework
+priority: Esencial
+mode: Self-hosted
 ---
 
 # pytest_asyncio

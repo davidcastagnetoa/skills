@@ -1,6 +1,9 @@
 ---
 name: lbp_fourier_texture
 description: Análisis de micro-textura mediante LBP y Fourier para detectar patrones de papel o píxel de pantalla
+type: Algorithm
+priority: Esencial
+mode: Self-hosted
 ---
 
 # lbp_fourier_texture

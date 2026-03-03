@@ -1,6 +1,9 @@
 ---
 name: random_challenge_sequencer
 description: Generar secuencias aleatorias de desafíos de liveness para prevenir ataques de replay grabado
+type: Algorithm
+priority: Esencial
+mode: Self-hosted
 ---
 
 # random_challenge_sequencer

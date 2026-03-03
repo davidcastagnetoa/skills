@@ -1,6 +1,9 @@
 ---
 name: clahe
 description: Normalización adaptativa de histograma (CLAHE) para mejorar legibilidad del texto del documento
+type: Algorithm
+priority: Esencial
+mode: Self-hosted
 ---
 
 # clahe

@@ -1,6 +1,9 @@
 ---
 name: dependency_graph_analysis
 description: Visualizar y analizar grafo de dependencias entre agentes para detectar ciclos
+type: Algorithm
+priority: Recomendada
+mode: Self-hosted
 ---
 
 # dependency_graph_analysis

@@ -1,6 +1,9 @@
 ---
 name: gitops_argocd
 description: GitOps — el estado del clúster Kubernetes refleja siempre el estado del repositorio Git
+type: Tool
+priority: Recomendada
+mode: Self-hosted
 ---
 
 # gitops_argocd

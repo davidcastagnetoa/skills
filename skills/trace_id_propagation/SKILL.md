@@ -1,6 +1,9 @@
 ---
 name: trace_id_propagation
 description: Propagación de trace IDs a través de microservicios del pipeline KYC para correlación de logs y métricas.
+type: Algorithm
+priority: Esencial
+mode: Self-hosted
 ---
 
 # trace_id_propagation

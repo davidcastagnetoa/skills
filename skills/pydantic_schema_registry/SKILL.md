@@ -1,6 +1,9 @@
 ---
 name: pydantic_schema_registry
 description: Definir schemas de todos los contratos entre agentes como modelos Pydantic versionados
+type: Library
+priority: Esencial
+mode: Self-hosted
 ---
 
 # pydantic_schema_registry

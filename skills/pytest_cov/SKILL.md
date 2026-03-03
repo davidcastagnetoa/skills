@@ -1,6 +1,9 @@
 ---
 name: pytest_cov
 description: Medición de cobertura de tests con umbral mínimo configurable en CI
+type: Tool
+priority: Esencial
+mode: Self-hosted
 ---
 
 # pytest_cov

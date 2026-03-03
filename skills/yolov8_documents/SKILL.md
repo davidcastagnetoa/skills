@@ -1,6 +1,9 @@
 ---
 name: yolov8_documents
 description: Clasificar tipo de documento y localizar regiones (foto, MRZ, campos de texto) con YOLOv8 fine-tuned
+type: ML Model
+priority: Esencial
+mode: Self-hosted
 ---
 
 # yolov8_documents

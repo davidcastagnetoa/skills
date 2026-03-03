@@ -1,6 +1,9 @@
 ---
 name: redis_sentinel
 description: Redis 7 con Sentinel para caché, rate limiting y sesiones con alta disponibilidad
+type: Tool
+priority: Esencial
+mode: Self-hosted
 ---
 
 # redis_sentinel

@@ -1,6 +1,9 @@
 ---
 name: laplacian_variance
 description: Medición de nitidez de imagen para rechazar capturas borrosas antes del análisis
+type: Algorithm
+priority: Esencial
+mode: Self-hosted
 ---
 
 # laplacian_variance

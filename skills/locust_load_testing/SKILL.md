@@ -1,6 +1,9 @@
 ---
 name: locust_load_testing
 description: Pruebas de carga y rendimiento para validar el SLO de 8 segundos antes de cada release
+type: Tool
+priority: Esencial
+mode: Self-hosted
 ---
 
 # locust_load_testing

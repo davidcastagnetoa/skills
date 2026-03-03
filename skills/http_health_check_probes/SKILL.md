@@ -1,6 +1,9 @@
 ---
 name: http_health_check_probes
 description: Endpoints HTTP de health check para microservicios del pipeline KYC con reporte de dependencias
+type: Protocol
+priority: Esencial
+mode: Self-hosted
 ---
 
 # http_health_check_probes
@@ -14,6 +17,7 @@ Utilizar esta skill cuando el health_monitor_agent necesite implementar o actual
 ## Instructions
 
 1. Crear un modulo `health.py` en cada microservicio con un router FastAPI dedicado:
+
 ```python
 from fastapi import APIRouter, Response
 from enum import Enum
@@ -27,6 +31,7 @@ class HealthStatus(str, Enum):
 ```
 
 2. Implementar el endpoint `/live` que indica si el proceso esta vivo (simplemente responde 200):
+
 ```python
 @health_router.get("/live")
 async def liveness():
@@ -34,6 +39,7 @@ async def liveness():
 ```
 
 3. Implementar el endpoint `/ready` que verifica si el servicio puede aceptar trafico, comprobando dependencias:
+
 ```python
 @health_router.get("/ready")
 async def readiness():
@@ -52,6 +58,7 @@ async def readiness():
 ```
 
 4. Implementar el endpoint `/health` que ofrece un reporte detallado con latencias de cada dependencia:
+
 ```python
 @health_router.get("/health")
 async def health_check():
@@ -71,6 +78,7 @@ async def health_check():
 ```
 
 5. Crear funciones auxiliares para verificar cada dependencia con timeouts cortos (maximo 2 segundos):
+
 ```python
 async def check_db_connection(timeout: float = 2.0) -> bool:
     try:
@@ -82,11 +90,13 @@ async def check_db_connection(timeout: float = 2.0) -> bool:
 ```
 
 6. Registrar el router en la aplicacion FastAPI principal de cada microservicio:
+
 ```python
 app.include_router(health_router, prefix="")
 ```
 
 7. Configurar respuestas con codigos HTTP apropiados: 200 para saludable, 503 para no disponible, 429 para sobrecargado:
+
 ```python
 def determine_overall_status(db_lat, redis_lat, model_ok):
     if not model_ok or db_lat is None:

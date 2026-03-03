@@ -1,6 +1,9 @@
 ---
 name: temporal_compliance_validator
 description: Verificar que el usuario completa cada challenge dentro del tiempo permitido
+type: Algorithm
+priority: Esencial
+mode: Self-hosted
 ---
 
 # temporal_compliance_validator

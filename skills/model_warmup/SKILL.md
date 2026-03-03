@@ -1,6 +1,9 @@
 ---
 name: model_warmup
 description: Cargar modelos ML una sola vez al arrancar el worker
+type: Algorithm
+priority: Esencial
+mode: Self-hosted
 ---
 
 # model_warmup

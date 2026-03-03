@@ -1,6 +1,9 @@
 ---
 name: pydantic_v2
 description: Validación y serialización ultra-rápida de contratos de datos entre agentes
+type: Library
+priority: Esencial
+mode: Self-hosted
 ---
 
 # pydantic_v2

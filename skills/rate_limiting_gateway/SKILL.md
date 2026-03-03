@@ -1,6 +1,9 @@
 ---
 name: rate_limiting_gateway
 description: Control de tasa por IP en el API Gateway con ventana deslizante implementada en Redis
+type: Algorithm
+priority: Esencial
+mode: Self-hosted
 ---
 
 # rate_limiting_gateway

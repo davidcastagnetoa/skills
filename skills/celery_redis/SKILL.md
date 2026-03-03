@@ -1,6 +1,9 @@
 ---
 name: celery_redis
 description: Cola de tareas distribuida para despachar trabajo computacionalmente intensivo a workers
+type: Framework
+priority: Esencial
+mode: Self-hosted
 ---
 
 # celery_redis

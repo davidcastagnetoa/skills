@@ -1,6 +1,9 @@
 ---
 name: prometheus_client_audit
 description: Exposición de métricas FAR, FRR, tiempos de respuesta y tasas de fraude desde el audit_agent
+type: Library
+priority: Recomendada
+mode: Self-hosted
 ---
 
 # prometheus_client_audit

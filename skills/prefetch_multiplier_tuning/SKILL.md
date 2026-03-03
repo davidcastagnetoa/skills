@@ -1,6 +1,9 @@
 ---
 name: prefetch_multiplier_tuning
 description: Ajuste del prefetch multiplier de Celery workers para optimizar throughput vs latencia en tareas KYC
+type: Algorithm
+priority: Recomendada
+mode: Self-hosted
 ---
 
 # prefetch_multiplier_tuning

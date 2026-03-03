@@ -1,6 +1,9 @@
 ---
 name: webrtc_media_devices
 description: Acceso a cámara en vivo desde web bloqueando galería — base del pipeline de captura
+type: Protocol
+priority: Esencial
+mode: Self-hosted
 ---
 
 # webrtc_media_devices

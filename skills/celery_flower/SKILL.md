@@ -1,6 +1,9 @@
 ---
 name: celery_flower
 description: Dashboard de monitorización de Celery para estado de workers y colas
+type: Tool
+priority: Recomendada
+mode: Self-hosted
 ---
 
 # celery_flower

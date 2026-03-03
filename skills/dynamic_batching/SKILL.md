@@ -1,6 +1,9 @@
 ---
 name: dynamic_batching
 description: Agrupar peticiones de inferencia en batches cuando la cola supera un umbral
+type: Algorithm
+priority: Recomendada
+mode: Self-hosted
 ---
 
 # dynamic_batching

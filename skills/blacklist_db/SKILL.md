@@ -1,6 +1,9 @@
 ---
 name: blacklist_db
 description: Base de datos interna de documentos comprometidos consultada via Redis
+type: Algorithm
+priority: Recomendada
+mode: Self-hosted
 ---
 
 # blacklist_db

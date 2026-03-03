@@ -1,6 +1,9 @@
 ---
 name: conventional_commits
 description: Estándar de mensajes de commit para generar changelogs automáticos y versiones semánticas
+type: Algorithm
+priority: Esencial
+mode: Self-hosted
 ---
 
 # conventional_commits

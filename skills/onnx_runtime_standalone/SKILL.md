@@ -1,6 +1,9 @@
 ---
 name: onnx_runtime_standalone
 description: ONNX Runtime como runtime independiente de inferencia, alternativa ligera a Triton para deployments simples
+type: Library
+priority: Esencial
+mode: Self-hosted
 ---
 
 # onnx_runtime_standalone

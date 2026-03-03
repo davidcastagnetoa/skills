@@ -1,6 +1,9 @@
 ---
 name: tesseract_ocr
 description: Motor OCR open-source clásico como alternativa de fallback
+type: ML Model
+priority: Opcional
+mode: Self-hosted
 ---
 
 # tesseract_ocr

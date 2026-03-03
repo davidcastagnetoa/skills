@@ -1,6 +1,9 @@
 ---
 name: technical_debt_backlog
 description: Mantener y priorizar el backlog de deuda técnica como parte del proceso de desarrollo
+type: Algorithm
+priority: Esencial
+mode: Self-hosted
 ---
 
 # technical_debt_backlog

@@ -1,6 +1,9 @@
 ---
 name: gzip_brotli_compression
 description: Comprimir respuestas JSON con Gzip/Brotli para reducir payload de red
+type: Algorithm
+priority: Recomendada
+mode: Self-hosted
 ---
 
 # gzip_brotli_compression

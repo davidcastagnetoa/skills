@@ -1,6 +1,9 @@
 ---
 name: alertmanager
 description: Gestor de alertas de Prometheus para notificar incidencias criticas del pipeline KYC
+type: Tool
+priority: Esencial
+mode: Self-hosted
 ---
 
 # alertmanager

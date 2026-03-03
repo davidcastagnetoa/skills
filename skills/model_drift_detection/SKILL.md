@@ -1,6 +1,9 @@
 ---
 name: model_drift_detection
 description: Detectar degradación progresiva de modelos ML en producción monitorizando scores y métricas biométricas
+type: Algorithm
+priority: Recomendada
+mode: Self-hosted
 ---
 
 # model_drift_detection

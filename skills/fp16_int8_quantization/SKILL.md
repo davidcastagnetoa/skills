@@ -1,6 +1,9 @@
 ---
 name: fp16_int8_quantization
 description: Cuantización de modelos ML a FP16/INT8 para reducir memoria y acelerar inferencia en el pipeline KYC
+type: Algorithm
+priority: Esencial
+mode: Self-hosted
 ---
 
 # fp16_int8_quantization

@@ -1,6 +1,9 @@
 ---
 name: pgbouncer
 description: Connection pooler para PostgreSQL que reduce overhead de conexiones en el pipeline KYC
+type: Tool
+priority: Esencial
+mode: Self-hosted
 ---
 
 # pgbouncer

@@ -1,6 +1,9 @@
 ---
 name: testcontainers
 description: Levantar dependencias reales en contenedores para tests de integración reproducibles
+type: Tool
+priority: Esencial
+mode: Self-hosted
 ---
 
 # testcontainers

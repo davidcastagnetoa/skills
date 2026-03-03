@@ -1,6 +1,9 @@
 ---
 name: compression_artifact_analysis
 description: Detectar artefactos de recompresión típicos de deepfakes y manipulaciones
+type: Algorithm
+priority: Recomendada
+mode: Self-hosted
 ---
 
 # compression_artifact_analysis

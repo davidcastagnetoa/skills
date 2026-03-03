@@ -1,6 +1,9 @@
 ---
 name: redis_broker
 description: Backend de mensajería para Celery con baja latencia
+type: Framework
+priority: Esencial
+mode: Self-hosted
 ---
 
 # redis_broker

@@ -1,6 +1,9 @@
 ---
 name: redis_py_async
 description: Cliente Python async para Redis sin bloquear el event loop
+type: Library
+priority: Esencial
+mode: Self-hosted
 ---
 
 # redis_py_async

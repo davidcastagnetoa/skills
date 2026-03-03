@@ -1,6 +1,9 @@
 ---
 name: deep_health_check
 description: Health checks profundos que verifican funcionalidad real de cada componente del pipeline KYC
+type: Algorithm
+priority: Esencial
+mode: Self-hosted
 ---
 
 # deep_health_check

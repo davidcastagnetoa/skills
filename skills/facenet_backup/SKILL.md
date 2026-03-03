@@ -1,6 +1,9 @@
 ---
 name: facenet_backup
 description: Modelo de embeddings faciales alternativo a ArcFace para mayor resiliencia del pipeline
+type: ML Model
+priority: Recomendada
+mode: Self-hosted
 ---
 
 # facenet_backup

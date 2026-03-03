@@ -1,6 +1,9 @@
 ---
 name: adr_framework
 description: Framework para registrar Architecture Decision Records — decisiones arquitectónicas inmutables y auditables
+type: Framework
+priority: Esencial
+mode: Self-hosted
 ---
 
 # adr_framework

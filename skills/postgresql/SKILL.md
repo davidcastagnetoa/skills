@@ -1,6 +1,9 @@
 ---
 name: postgresql
 description: Configuración y administración base de PostgreSQL para el datastore del sistema KYC
+type: Framework
+priority: Esencial
+mode: Self-hosted
 ---
 
 # postgresql

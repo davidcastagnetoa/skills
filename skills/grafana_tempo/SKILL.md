@@ -1,6 +1,9 @@
 ---
 name: grafana_tempo
 description: Backend de trazas distribuidas para visualizar el flujo completo de verificacion KYC
+type: Tool
+priority: Recomendada
+mode: Self-hosted
 ---
 
 # grafana_tempo

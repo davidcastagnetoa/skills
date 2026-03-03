@@ -1,6 +1,9 @@
 ---
 name: vpn_proxy_tor_detection
 description: Detectar conexiones anónimas (VPN, proxy, Tor) por IP
+type: API
+priority: Recomendada
+mode: Híbrido
 ---
 
 # vpn_proxy_tor_detection

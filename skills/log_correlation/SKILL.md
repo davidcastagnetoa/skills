@@ -1,6 +1,9 @@
 ---
 name: log_correlation
 description: Correlación de logs entre microservicios del pipeline KYC usando trace_id y session_id.
+type: Algorithm
+priority: Esencial
+mode: Self-hosted
 ---
 
 # log_correlation

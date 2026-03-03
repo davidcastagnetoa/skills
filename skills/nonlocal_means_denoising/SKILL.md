@@ -1,6 +1,9 @@
 ---
 name: nonlocal_means_denoising
 description: Reducción de ruido preservando bordes y texto del documento para mejorar la calidad del OCR
+type: Algorithm
+priority: Esencial
+mode: Self-hosted
 ---
 
 # nonlocal_means_denoising

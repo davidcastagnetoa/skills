@@ -1,6 +1,9 @@
 ---
 name: font_consistency_analyzer
 description: Detectar inconsistencias tipográficas que delaten edición del texto del documento
+type: Algorithm
+priority: Recomendada
+mode: Self-hosted
 ---
 
 # font_consistency_analyzer

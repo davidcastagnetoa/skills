@@ -1,6 +1,9 @@
 ---
 name: cross_field_consistency_checker
 description: Verificar coherencia entre campos MRZ y zona visual del documento para detectar falsificaciones
+type: Algorithm
+priority: Esencial
+mode: Self-hosted
 ---
 
 # cross_field_consistency_checker

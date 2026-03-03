@@ -1,6 +1,9 @@
 ---
 name: xceptionnet_gan_detector
 description: Clasificador de imágenes sintéticas generadas por GAN (XceptionNet/EfficientNet fine-tuned)
+type: ML Model
+priority: Recomendada
+mode: Self-hosted
 ---
 
 # xceptionnet_gan_detector

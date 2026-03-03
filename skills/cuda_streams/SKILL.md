@@ -1,6 +1,9 @@
 ---
 name: cuda_streams
 description: Paralelismo GPU para ejecutar múltiples inferencias simultáneamente
+type: Library
+priority: Esencial
+mode: Self-hosted
 ---
 
 # cuda_streams

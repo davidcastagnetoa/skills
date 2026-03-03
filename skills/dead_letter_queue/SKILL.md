@@ -1,6 +1,9 @@
 ---
 name: dead_letter_queue
 description: Cola de mensajes fallidos para capturar y reprocesar tareas KYC que exceden reintentos maximos
+type: Algorithm
+priority: Esencial
+mode: Self-hosted
 ---
 
 # dead_letter_queue

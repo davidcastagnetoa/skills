@@ -1,6 +1,9 @@
 ---
 name: retry_exponential_backoff
 description: Reintentar automáticamente errores transitorios con backoff exponencial y jitter
+type: Algorithm
+priority: Esencial
+mode: Self-hosted
 ---
 
 # retry_exponential_backoff

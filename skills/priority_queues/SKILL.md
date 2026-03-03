@@ -1,6 +1,9 @@
 ---
 name: priority_queues
 description: Colas separadas por prioridad con workers dedicados para garantizar SLO de latencia
+type: Algorithm
+priority: Esencial
+mode: Self-hosted
 ---
 
 # priority_queues

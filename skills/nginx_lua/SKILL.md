@@ -1,6 +1,9 @@
 ---
 name: nginx_lua
 description: Reverse proxy de alto rendimiento con módulo Lua para lógica personalizada de gateway
+type: Tool
+priority: Esencial
+mode: Self-hosted
 ---
 
 # nginx_lua

@@ -1,6 +1,9 @@
 ---
 name: archunit_import_linter
 description: Verificar reglas de dependencia entre módulos para evitar importaciones cruzadas
+type: Tool
+priority: Recomendada
+mode: Self-hosted
 ---
 
 # archunit_import_linter

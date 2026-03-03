@@ -1,6 +1,9 @@
 ---
 name: prometheus_grafana
 description: Stack de métricas y dashboards para visibilidad del pipeline KYC en tiempo real
+type: Tool
+priority: Esencial
+mode: Self-hosted
 ---
 
 # prometheus_grafana

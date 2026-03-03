@@ -1,6 +1,9 @@
 ---
 name: aes_256_gcm
 description: Cifrado AES-256-GCM para datos biométricos en reposo con autenticación integrada
+type: Algorithm
+priority: Esencial
+mode: Self-hosted
 ---
 
 # aes_256_gcm

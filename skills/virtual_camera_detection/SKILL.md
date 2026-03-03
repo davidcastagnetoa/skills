@@ -1,6 +1,9 @@
 ---
 name: virtual_camera_detection
 description: Detectar drivers de cámara virtual (OBS, ManyCam) por fingerprinting de dispositivo
+type: Algorithm
+priority: Esencial
+mode: Self-hosted
 ---
 
 # virtual_camera_detection

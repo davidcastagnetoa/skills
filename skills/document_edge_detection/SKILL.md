@@ -1,6 +1,9 @@
 ---
 name: document_edge_detection
 description: Detectar bordes del documento para validar captura correcta y aplicar corrección de perspectiva
+type: Algorithm
+priority: Esencial
+mode: Self-hosted
 ---
 
 # document_edge_detection

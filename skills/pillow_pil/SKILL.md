@@ -1,6 +1,9 @@
 ---
 name: pillow_pil
 description: Librería base de procesamiento de imagen en Python — operaciones fundamentales de preprocesamiento de documentos
+type: Library
+priority: Esencial
+mode: Self-hosted
 ---
 
 # pillow_pil

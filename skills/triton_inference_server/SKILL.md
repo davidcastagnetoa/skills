@@ -1,6 +1,9 @@
 ---
 name: triton_inference_server
 description: Servidor de modelos production-grade con soporte TensorRT, ONNX y PyTorch en GPU
+type: Tool
+priority: Esencial
+mode: Self-hosted
 ---
 
 # triton_inference_server

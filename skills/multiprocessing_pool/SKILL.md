@@ -1,6 +1,9 @@
 ---
 name: multiprocessing_pool
 description: Pool de procesos Python para tareas CPU-bound evitando el GIL
+type: Library
+priority: Esencial
+mode: Self-hosted
 ---
 
 # multiprocessing_pool

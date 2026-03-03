@@ -1,6 +1,9 @@
 ---
 name: esrgan_super_resolution
 description: Super-resolución de la foto del documento para mejorar calidad del face match cuando la foto es de baja resolución
+type: ML Model
+priority: Recomendada
+mode: Self-hosted
 ---
 
 # esrgan_super_resolution

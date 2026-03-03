@@ -1,6 +1,9 @@
 ---
 name: mediapipe_face_mesh
 description: 468 landmarks faciales precisos para detección de expresiones y orientación en liveness activo
+type: ML Model
+priority: Esencial
+mode: Self-hosted
 ---
 
 # mediapipe_face_mesh

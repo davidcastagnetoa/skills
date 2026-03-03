@@ -1,6 +1,9 @@
 ---
 name: ttl_management
 description: Expiración automática de datos con TTL diferenciado por tipo
+type: Algorithm
+priority: Esencial
+mode: Self-hosted
 ---
 
 # ttl_management

@@ -1,6 +1,9 @@
 ---
 name: optical_flow_farneback
 description: Detectar movimiento inconsistente o loop de video pregrabado mediante análisis de flujo óptico
+type: Algorithm
+priority: Recomendada
+mode: Self-hosted
 ---
 
 # optical_flow_farneback

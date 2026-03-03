@@ -1,6 +1,9 @@
 ---
 name: w3c_trace_context
 description: Estandar W3C Trace Context para propagacion de trazas entre microservicios KYC
+type: Protocol
+priority: Esencial
+mode: Self-hosted
 ---
 
 # w3c_trace_context

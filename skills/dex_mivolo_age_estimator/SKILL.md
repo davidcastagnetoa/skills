@@ -1,6 +1,9 @@
 ---
 name: dex_mivolo_age_estimator
 description: Estimar edad del usuario por el rostro y comparar con fecha de nacimiento del documento
+type: ML Model
+priority: Esencial
+mode: Self-hosted
 ---
 
 # dex_mivolo_age_estimator

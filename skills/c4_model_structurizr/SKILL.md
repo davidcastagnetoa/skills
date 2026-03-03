@@ -1,6 +1,9 @@
 ---
 name: c4_model_structurizr
 description: Diagramas de arquitectura C4 como código con Structurizr DSL, versionados en Git
+type: Framework
+priority: Esencial
+mode: Self-hosted
 ---
 
 # c4_model_structurizr

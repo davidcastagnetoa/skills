@@ -1,6 +1,9 @@
 ---
 name: log_retention_policies
 description: Políticas de retención de logs diferenciadas por tipo y sensibilidad para el pipeline KYC.
+type: Algorithm
+priority: Esencial
+mode: Self-hosted
 ---
 
 # log_retention_policies

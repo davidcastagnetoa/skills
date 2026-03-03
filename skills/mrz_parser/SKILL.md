@@ -1,6 +1,9 @@
 ---
 name: mrz_parser
 description: Parsear y validar la Machine Readable Zone (MRZ) de pasaportes y DNIs según estándar ICAO 9303
+type: Algorithm
+priority: Esencial
+mode: Self-hosted
 ---
 
 # mrz_parser

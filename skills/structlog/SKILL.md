@@ -1,6 +1,9 @@
 ---
 name: structlog
 description: Logging JSON estructurado y de alto rendimiento con trazabilidad completa por sesión
+type: Library
+priority: Esencial
+mode: Self-hosted
 ---
 
 # structlog

@@ -1,6 +1,9 @@
 ---
 name: decision_explainer
 description: Generar razones legibles de la decisión para auditoría y revisión manual (LIME/SHAP)
+type: Algorithm
+priority: Recomendada
+mode: Self-hosted
 ---
 
 # decision_explainer

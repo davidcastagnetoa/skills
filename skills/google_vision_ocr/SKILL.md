@@ -1,6 +1,9 @@
 ---
 name: google_vision_ocr
 description: Fallback cloud OCR para casos donde el OCR self-hosted falla
+type: API
+priority: Opcional
+mode: Cloud
 ---
 
 # google_vision_ocr

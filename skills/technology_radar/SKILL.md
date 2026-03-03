@@ -1,6 +1,9 @@
 ---
 name: technology_radar
 description: Mapa periódico de tecnologías del proyecto adopt trial assess hold formato ThoughtWorks
+type: Framework
+priority: Recomendada
+mode: Self-hosted
 ---
 
 # technology_radar

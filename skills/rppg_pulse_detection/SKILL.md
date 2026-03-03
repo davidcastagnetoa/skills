@@ -1,6 +1,9 @@
 ---
 name: rppg_pulse_detection
 description: Detectar pulso cardiaco en el video como señal biológica irrefutable de vida
+type: ML Model
+priority: Opcional
+mode: Self-hosted
 ---
 
 # rppg_pulse_detection

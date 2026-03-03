@@ -1,6 +1,9 @@
 ---
 name: dependabot_renovate
 description: Actualizaciones automáticas de dependencias con PRs generados automáticamente
+type: Tool
+priority: Recomendada
+mode: Self-hosted
 ---
 
 # dependabot_renovate

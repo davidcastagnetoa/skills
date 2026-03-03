@@ -1,6 +1,9 @@
 ---
 name: trivy_image_scanning
 description: Escanear imágenes Docker en busca de vulnerabilidades CVE antes de desplegar
+type: Tool
+priority: Esencial
+mode: Self-hosted
 ---
 
 # trivy_image_scanning

@@ -1,6 +1,9 @@
 ---
 name: smile_expression_detector
 description: Verificar expresiones faciales (sonrisa) en el desafío de liveness activo
+type: ML Model
+priority: Recomendada
+mode: Self-hosted
 ---
 
 # smile_expression_detector

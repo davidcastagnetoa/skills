@@ -1,6 +1,9 @@
 ---
 name: jaeger
 description: Jaeger como backend de trazas distribuidas para almacenar y visualizar spans del pipeline de verificación KYC.
+type: Tool
+priority: Esencial
+mode: Self-hosted
 ---
 
 # jaeger

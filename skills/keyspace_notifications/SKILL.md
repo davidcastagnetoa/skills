@@ -1,6 +1,9 @@
 ---
 name: keyspace_notifications
 description: Suscribirse a eventos de expiración de claves para ejecutar acciones de limpieza
+type: Algorithm
+priority: Recomendada
+mode: Self-hosted
 ---
 
 # keyspace_notifications

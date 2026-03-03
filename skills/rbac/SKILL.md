@@ -1,6 +1,9 @@
 ---
 name: rbac
 description: Control de acceso basado en roles para microservicios y operadores del sistema KYC
+type: Algorithm
+priority: Esencial
+mode: Self-hosted
 ---
 
 # rbac

@@ -1,6 +1,9 @@
 ---
 name: ip_blacklist_whitelist
 description: Bloqueo de IPs maliciosas y rangos no permitidos antes de que lleguen a los servicios
+type: Algorithm
+priority: Esencial
+mode: Self-hosted
 ---
 
 # ip_blacklist_whitelist

@@ -1,6 +1,9 @@
 ---
 name: cosine_similarity
 description: Métrica estándar de comparación entre embeddings faciales normalizados
+type: Algorithm
+priority: Esencial
+mode: Self-hosted
 ---
 
 # cosine_similarity

@@ -1,6 +1,9 @@
 ---
 name: promtail_vector
 description: Agentes de recolección de logs (Promtail o Vector) para centralizar logs del pipeline KYC en Grafana Loki.
+type: Tool
+priority: Esencial
+mode: Self-hosted
 ---
 
 # promtail_vector

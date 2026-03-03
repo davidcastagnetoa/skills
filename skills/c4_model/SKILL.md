@@ -1,6 +1,9 @@
 ---
 name: c4_model
 description: Metodología C4 para documentar la arquitectura del sistema KYC en niveles progresivos de detalle
+type: Framework
+priority: Esencial
+mode: Self-hosted
 ---
 
 # c4_model

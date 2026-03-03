@@ -1,6 +1,9 @@
 ---
 name: age_progression_compensation
 description: Ajustar el embedding para compensar diferencia de edad si la foto del documento es antigua
+type: Algorithm
+priority: Opcional
+mode: Self-hosted
 ---
 
 # age_progression_compensation

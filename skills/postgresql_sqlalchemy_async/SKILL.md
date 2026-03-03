@@ -1,6 +1,9 @@
 ---
 name: postgresql_sqlalchemy_async
 description: ORM async moderno para persistencia de sesiones de auditoría, logs y listas negras
+type: Framework
+priority: Esencial
+mode: Self-hosted
 ---
 
 # postgresql_sqlalchemy_async

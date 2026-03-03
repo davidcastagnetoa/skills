@@ -1,6 +1,9 @@
 ---
 name: circuit_breaker
 description: Patrón circuit breaker con pybreaker/tenacity para aislar fallos de agentes sin afectar al sistema completo
+type: Library
+priority: Esencial
+mode: Self-hosted
 ---
 
 # circuit_breaker

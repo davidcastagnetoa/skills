@@ -1,6 +1,9 @@
 ---
 name: human_review_queue
 description: Cola de casos ambiguos para revisión humana con SLA de respuesta
+type: Framework
+priority: Recomendada
+mode: Self-hosted
 ---
 
 # human_review_queue

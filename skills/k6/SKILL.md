@@ -1,6 +1,9 @@
 ---
 name: k6
 description: Pruebas de carga con scripting en JavaScript más ligero que Locust
+type: Tool
+priority: Recomendada
+mode: Self-hosted
 ---
 
 # k6

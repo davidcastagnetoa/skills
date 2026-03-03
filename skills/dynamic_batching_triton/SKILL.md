@@ -1,6 +1,9 @@
 ---
 name: dynamic_batching_triton
 description: Batching dinámico en Triton Inference Server para maximizar throughput GPU en inferencia facial
+type: Algorithm
+priority: Recomendada
+mode: Self-hosted
 ---
 
 # dynamic_batching_triton
@@ -14,6 +17,7 @@ Usar esta skill cuando el **model_server_agent** necesite configurar, tunear o d
 ## Instructions
 
 1. Habilitar dynamic batching en el model config de Triton para cada modelo del pipeline:
+
    ```protobuf
    # model_repository/arcface/config.pbtxt
    name: "arcface"
@@ -31,6 +35,7 @@ Usar esta skill cuando el **model_server_agent** necesite configurar, tunear o d
    ```
 
 2. Configurar parámetros de batching diferenciados por modelo según su perfil de latencia:
+
    ```protobuf
    # Liveness model - latencia crítica, batches pequeños
    dynamic_batching {
@@ -46,6 +51,7 @@ Usar esta skill cuando el **model_server_agent** necesite configurar, tunear o d
    ```
 
 3. Configurar prioridades de scheduling para que liveness (crítico en UX) tenga prioridad sobre OCR:
+
    ```protobuf
    dynamic_batching {
      priority_levels: 3
@@ -58,6 +64,7 @@ Usar esta skill cuando el **model_server_agent** necesite configurar, tunear o d
    ```
 
 4. Habilitar métricas de batching en Triton para monitorizar la efectividad:
+
    ```bash
    # Arrancar Triton con métricas habilitadas
    tritonserver --model-repository=/models \
@@ -67,6 +74,7 @@ Usar esta skill cuando el **model_server_agent** necesite configurar, tunear o d
    ```
 
 5. Monitorizar métricas clave de batching via Prometheus endpoint:
+
    ```
    nv_inference_request_success       # Requests exitosas
    nv_inference_queue_duration_us     # Tiempo en cola
@@ -76,6 +84,7 @@ Usar esta skill cuando el **model_server_agent** necesite configurar, tunear o d
    ```
 
 6. Tunear el max_queue_delay basándose en el SLA de 8 segundos totales del pipeline:
+
    ```python
    # Budget de latencia por modelo dentro del SLA de 8s
    LATENCY_BUDGET_MS = {

@@ -1,6 +1,9 @@
 ---
 name: opentelemetry_jaeger
 description: Trazabilidad distribuida del pipeline KYC para identificar cuellos de botella y depurar incidencias
+type: Tool
+priority: Esencial
+mode: Self-hosted
 ---
 
 # opentelemetry_jaeger

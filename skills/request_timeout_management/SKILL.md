@@ -1,6 +1,9 @@
 ---
 name: request_timeout_management
 description: Timeout global por tipo de endpoint con cancelación limpia
+type: Algorithm
+priority: Esencial
+mode: Self-hosted
 ---
 
 # request_timeout_management

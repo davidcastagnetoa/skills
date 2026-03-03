@@ -1,6 +1,9 @@
 ---
 name: drawio
 description: Diagramas visuales complejos exportables a XML versionables en Git
+type: Tool
+priority: Recomendada
+mode: Self-hosted
 ---
 
 # drawio

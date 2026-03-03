@@ -1,6 +1,9 @@
 ---
 name: kubernetes_helm
 description: Orquestación de contenedores en producción con Helm para gestionar releases versionadas
+type: Tool
+priority: Esencial
+mode: Self-hosted
 ---
 
 # kubernetes_helm

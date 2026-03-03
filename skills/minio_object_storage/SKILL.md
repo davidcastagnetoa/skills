@@ -1,6 +1,9 @@
 ---
 name: minio_object_storage
 description: Object storage S3-compatible self-hosted para almacenamiento temporal cifrado de imágenes biométricas
+type: Framework
+priority: Esencial
+mode: Self-hosted
 ---
 
 # minio_object_storage

@@ -1,6 +1,9 @@
 ---
 name: ear_blink_detection
 description: Detectar parpadeo natural midiendo Eye Aspect Ratio (EAR) frame a frame con landmarks faciales
+type: Algorithm
+priority: Esencial
+mode: Self-hosted
 ---
 
 # ear_blink_detection

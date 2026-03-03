@@ -1,6 +1,9 @@
 ---
 name: paddleocr
 description: OCR multiidioma de alta precisión completamente self-hosted para extracción de texto de documentos
+type: ML Model
+priority: Esencial
+mode: Self-hosted
 ---
 
 # paddleocr

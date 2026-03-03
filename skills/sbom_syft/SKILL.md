@@ -1,6 +1,9 @@
 ---
 name: sbom_syft
 description: Generar inventario de todas las dependencias del sistema (Software Bill of Materials) para auditorías de seguridad
+type: Tool
+priority: Recomendada
+mode: Self-hosted
 ---
 
 # sbom_syft

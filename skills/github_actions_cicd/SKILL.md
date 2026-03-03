@@ -1,6 +1,9 @@
 ---
 name: github_actions_cicd
 description: Pipeline de CI/CD con gates de calidad automatizados en cada PR
+type: Tool
+priority: Esencial
+mode: Self-hosted
 ---
 
 # github_actions_cicd

@@ -1,6 +1,9 @@
 ---
 name: watchdog_supervisor
 description: Supervisor de procesos que reinicia workers muertos, detecta zombies y escala segun carga del pipeline KYC
+type: Tool
+priority: Recomendada
+mode: Self-hosted
 ---
 
 # watchdog_supervisor

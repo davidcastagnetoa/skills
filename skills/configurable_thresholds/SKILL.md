@@ -1,6 +1,9 @@
 ---
 name: configurable_thresholds
 description: Umbrales de decisión ajustables sin redeploy, servidos desde caché Redis
+type: Algorithm
+priority: Esencial
+mode: Self-hosted
 ---
 
 # configurable_thresholds

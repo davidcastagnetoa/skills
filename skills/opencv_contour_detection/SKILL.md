@@ -1,6 +1,9 @@
 ---
 name: opencv_contour_detection
 description: Detectar bordes y contornos del documento para segmentación y corrección de perspectiva
+type: Algorithm
+priority: Esencial
+mode: Self-hosted
 ---
 
 # opencv_contour_detection

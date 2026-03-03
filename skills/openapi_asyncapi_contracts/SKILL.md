@@ -1,6 +1,9 @@
 ---
 name: openapi_asyncapi_contracts
 description: Definir y versionar contratos de interfaz entre agentes REST (OpenAPI) y asíncronos (AsyncAPI)
+type: Protocol
+priority: Esencial
+mode: Self-hosted
 ---
 
 # openapi_asyncapi_contracts

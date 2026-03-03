@@ -1,6 +1,9 @@
 ---
 name: redis_persistence
 description: Durabilidad con RDB para snapshots y AOF para WAL de operaciones
+type: Algorithm
+priority: Esencial
+mode: Self-hosted
 ---
 
 # redis_persistence

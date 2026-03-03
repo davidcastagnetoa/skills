@@ -1,6 +1,9 @@
 ---
 name: patroni
 description: Alta disponibilidad de PostgreSQL con failover automático para el datastore KYC
+type: Tool
+priority: Esencial
+mode: Self-hosted
 ---
 
 # patroni

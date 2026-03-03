@@ -1,6 +1,9 @@
 ---
 name: encryption_tls
 description: Cifrado TLS 1.3 en todas las comunicaciones y cifrado de imágenes en tránsito
+type: Protocol
+priority: Esencial
+mode: Self-hosted
 ---
 
 # encryption_tls

@@ -1,6 +1,9 @@
 ---
 name: prometheus
 description: Prometheus como sistema de métricas time-series para monitorizar el pipeline KYC con scraping, almacenamiento y PromQL.
+type: Tool
+priority: Esencial
+mode: Self-hosted
 ---
 
 # prometheus

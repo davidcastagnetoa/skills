@@ -1,6 +1,9 @@
 ---
 name: dcgm_exporter
 description: NVIDIA DCGM Exporter para metricas de GPU en nodos de inferencia ML del pipeline KYC
+type: Tool
+priority: Esencial
+mode: Self-hosted
 ---
 
 # dcgm_exporter

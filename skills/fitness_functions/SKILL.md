@@ -1,6 +1,9 @@
 ---
 name: fitness_functions
 description: Tests automatizados que verifican propiedades arquitectónicas como latencia máxima y acoplamiento entre módulos
+type: Algorithm
+priority: Esencial
+mode: Self-hosted
 ---
 
 # fitness_functions

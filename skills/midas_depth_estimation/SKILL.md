@@ -1,6 +1,9 @@
 ---
 name: midas_depth_estimation
 description: Estimación de profundidad facial para verificar volumen real (3D) con modelo monocular MiDaS
+type: ML Model
+priority: Recomendada
+mode: Self-hosted
 ---
 
 # midas_depth_estimation

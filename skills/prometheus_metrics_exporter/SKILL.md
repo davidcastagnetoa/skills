@@ -1,6 +1,9 @@
 ---
 name: prometheus_metrics_exporter
 description: Exportar métricas del API Gateway KYC al formato Prometheus para monitorización del pipeline de verificación.
+type: Library
+priority: Esencial
+mode: Self-hosted
 ---
 
 # prometheus_metrics_exporter

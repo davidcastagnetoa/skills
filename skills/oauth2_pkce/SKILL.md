@@ -1,6 +1,9 @@
 ---
 name: oauth2_pkce
 description: Flujo OAuth 2.0 con PKCE para autenticación segura de clientes móviles
+type: Protocol
+priority: Recomendada
+mode: Self-hosted
 ---
 
 # oauth2_pkce

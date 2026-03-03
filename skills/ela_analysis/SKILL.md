@@ -1,6 +1,9 @@
 ---
 name: ela_analysis
 description: Error Level Analysis (ELA) para detectar manipulación digital del documento por inconsistencias de compresión JPEG
+type: Algorithm
+priority: Esencial
+mode: Self-hosted
 ---
 
 # ela_analysis

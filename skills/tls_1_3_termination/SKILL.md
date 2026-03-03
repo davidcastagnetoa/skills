@@ -1,6 +1,9 @@
 ---
 name: tls_1_3_termination
 description: Cifrado de todo el tráfico en tránsito con TLS 1.3
+type: Protocol
+priority: Esencial
+mode: Self-hosted
 ---
 
 # tls_1_3_termination

@@ -1,6 +1,9 @@
 ---
 name: prometheus_client
 description: Cliente Python de Prometheus para instrumentar el pipeline KYC con metricas custom
+type: Library
+priority: Recomendada
+mode: Self-hosted
 ---
 
 # prometheus_client

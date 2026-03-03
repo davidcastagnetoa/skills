@@ -1,6 +1,9 @@
 ---
 name: opentelemetry_sdk
 description: SDK de OpenTelemetry para instrumentación unificada de métricas, trazas y logs del pipeline KYC en Python.
+type: Library
+priority: Esencial
+mode: Self-hosted
 ---
 
 # opentelemetry_sdk
@@ -14,6 +17,7 @@ Usar este skill cuando el observability_agent necesite instrumentar los servicio
 ## Instructions
 
 1. Instalar las dependencias de OpenTelemetry necesarias para el pipeline KYC:
+
    ```bash
    pip install opentelemetry-api \
      opentelemetry-sdk \
@@ -25,6 +29,7 @@ Usar este skill cuando el observability_agent necesite instrumentar los servicio
    ```
 
 2. Configurar el proveedor de trazas con exportador OTLP para enviar spans al collector:
+
    ```python
    from opentelemetry import trace
    from opentelemetry.sdk.trace import TracerProvider
@@ -46,6 +51,7 @@ Usar este skill cuando el observability_agent necesite instrumentar los servicio
    ```
 
 3. Configurar el proveedor de métricas con exportador Prometheus:
+
    ```python
    from opentelemetry import metrics
    from opentelemetry.sdk.metrics import MeterProvider
@@ -68,6 +74,7 @@ Usar este skill cuando el observability_agent necesite instrumentar los servicio
    ```
 
 4. Instrumentar automáticamente FastAPI y las llamadas HTTP entre servicios:
+
    ```python
    from fastapi import FastAPI
    from opentelemetry.instrumentation.fastapi import FastAPIInstrumentor
@@ -79,6 +86,7 @@ Usar este skill cuando el observability_agent necesite instrumentar los servicio
    ```
 
 5. Añadir spans personalizados para operaciones críticas del pipeline KYC:
+
    ```python
    from opentelemetry import trace
 
@@ -106,6 +114,7 @@ Usar este skill cuando el observability_agent necesite instrumentar los servicio
    ```
 
 6. Configurar la propagación de contexto para mantener las trazas entre servicios:
+
    ```python
    from opentelemetry.propagate import set_global_textmap
    from opentelemetry.propagators.composite import CompositePropagator
@@ -119,6 +128,7 @@ Usar este skill cuando el observability_agent necesite instrumentar los servicio
    ```
 
 7. Integrar OpenTelemetry con el logging existente para correlación automática:
+
    ```python
    from opentelemetry.instrumentation.logging import LoggingInstrumentor
    import logging
@@ -133,6 +143,7 @@ Usar este skill cuando el observability_agent necesite instrumentar los servicio
    ```
 
 8. Crear un módulo de inicialización reutilizable para todos los servicios del pipeline:
+
    ```python
    # shared/telemetry.py
    def init_telemetry(service_name: str, otlp_endpoint: str = "http://otel-collector:4317"):

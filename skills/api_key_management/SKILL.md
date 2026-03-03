@@ -1,6 +1,9 @@
 ---
 name: api_key_management
 description: Autenticación para clientes server-to-server mediante API Keys
+type: Algorithm
+priority: Esencial
+mode: Self-hosted
 ---
 
 # api_key_management

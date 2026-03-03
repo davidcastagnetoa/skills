@@ -1,6 +1,9 @@
 ---
 name: circuit_breaker_gateway
 description: Abrir el circuito si un servicio downstream falla repetidamente para evitar cascada de errores
+type: Algorithm
+priority: Esencial
+mode: Self-hosted
 ---
 
 # circuit_breaker_gateway

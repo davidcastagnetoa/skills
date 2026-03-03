@@ -1,6 +1,9 @@
 ---
 name: redis_7
 description: Store principal de caché O(1) en lecturas/escrituras
+type: Framework
+priority: Esencial
+mode: Self-hosted
 ---
 
 # redis_7

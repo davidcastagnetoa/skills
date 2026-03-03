@@ -1,6 +1,9 @@
 ---
 name: geoip2_maxmind
 description: Geolocalización por IP con base de datos descargable MaxMind GeoLite2
+type: Library
+priority: Recomendada
+mode: Self-hosted
 ---
 
 # geoip2_maxmind

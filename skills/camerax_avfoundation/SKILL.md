@@ -1,6 +1,9 @@
 ---
 name: camerax_avfoundation
 description: Acceso nativo a cámara en apps móviles con CameraX (Android) y AVFoundation (iOS)
+type: Framework
+priority: Esencial
+mode: Self-hosted
 ---
 
 # camerax_avfoundation

@@ -1,6 +1,9 @@
 ---
 name: histogram_analysis
 description: Detectar sobreexposición, subexposición e iluminación desigual en frames capturados
+type: Algorithm
+priority: Esencial
+mode: Self-hosted
 ---
 
 # histogram_analysis

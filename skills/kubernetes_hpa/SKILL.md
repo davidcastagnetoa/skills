@@ -1,6 +1,9 @@
 ---
 name: kubernetes_hpa
 description: Horizontal Pod Autoscaler para escalar workers de inferencia, OCR y face matching con metricas custom
+type: Tool
+priority: Recomendada
+mode: Self-hosted
 ---
 
 # kubernetes_hpa

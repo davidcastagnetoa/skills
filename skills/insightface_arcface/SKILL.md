@@ -1,6 +1,9 @@
 ---
 name: insightface_arcface
 description: Reconocimiento facial de estado del arte con ArcFace R100 para comparar selfie con foto del documento
+type: ML Model
+priority: Esencial
+mode: Self-hosted
 ---
 
 # insightface_arcface

@@ -1,6 +1,9 @@
 ---
 name: ab_model_routing
 description: Routing A/B entre versiones de modelos ML para evaluar mejoras en producción con métricas FAR/FRR
+type: Algorithm
+priority: Recomendada
+mode: Self-hosted
 ---
 
 # ab_model_routing
@@ -14,6 +17,7 @@ Usa esta skill cuando necesites evaluar una nueva versión de modelo ML en produ
 ## Instructions
 
 1. Definir la configuración del experimento A/B:
+
    ```python
    @dataclass
    class ABExperiment:
@@ -29,6 +33,7 @@ Usa esta skill cuando necesites evaluar una nueva versión de modelo ML en produ
    ```
 
 2. Implementar el router que asigna cada solicitud de verificación al modelo control o candidato:
+
    ```python
    class ABRouter:
        def __init__(self, experiment: ABExperiment):
@@ -45,6 +50,7 @@ Usa esta skill cuando necesites evaluar una nueva versión de modelo ML en produ
    ```
 
 3. Registrar los resultados de cada verificación asociados al grupo (control/candidato):
+
    ```python
    class ABMetricsCollector:
        def record(self, experiment_id: str, group: str, session_id: str,
@@ -61,6 +67,7 @@ Usa esta skill cuando necesites evaluar una nueva versión de modelo ML en produ
    ```
 
 4. Implementar el análisis estadístico para determinar si la diferencia entre modelos es significativa:
+
    ```python
    from scipy import stats
 
@@ -82,6 +89,7 @@ Usa esta skill cuando necesites evaluar una nueva versión de modelo ML en produ
    ```
 
 5. Configurar guardrails automáticos que detengan el experimento si el modelo candidato degrada métricas críticas:
+
    ```python
    def check_guardrails(self, experiment_id: str):
        candidate_far = self.calculate_far(experiment_id, "candidate")

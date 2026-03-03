@@ -1,6 +1,9 @@
 ---
 name: cert_manager
-description: "Emisión y renovación automática de certificados TLS en Kubernetes usando Let's Encrypt"
+description: Emisión y renovación automática de certificados TLS en Kubernetes usando Let's Encrypt
+type: Tool
+priority: Esencial
+mode: Self-hosted"
 ---
 
 # cert_manager

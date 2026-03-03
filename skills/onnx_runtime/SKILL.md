@@ -1,6 +1,9 @@
 ---
 name: onnx_runtime
 description: Runtime de inferencia ONNX optimizado para modelos faciales y de documento con aceleración CPU/GPU
+type: Library
+priority: Esencial
+mode: Self-hosted
 ---
 
 # onnx_runtime

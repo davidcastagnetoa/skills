@@ -1,6 +1,9 @@
 ---
 name: cache_stampede_prevention
 description: Evitar que múltiples workers recarguen el mismo dato al expirar simultáneamente
+type: Algorithm
+priority: Recomendada
+mode: Self-hosted
 ---
 
 # cache_stampede_prevention

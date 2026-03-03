@@ -1,6 +1,9 @@
 ---
 name: scikit_image
 description: Algoritmos avanzados de procesamiento de imagen para análisis de documentos
+type: Library
+priority: Recomendada
+mode: Self-hosted
 ---
 
 # scikit_image

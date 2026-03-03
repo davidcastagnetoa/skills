@@ -1,6 +1,9 @@
 ---
 name: pre_commit_hooks
 description: Ejecutar linting, formatting, type checking y seguridad automáticamente antes de cada commit
+type: Tool
+priority: Esencial
+mode: Self-hosted
 ---
 
 # pre_commit_hooks

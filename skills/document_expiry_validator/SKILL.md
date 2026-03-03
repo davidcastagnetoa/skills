@@ -1,6 +1,9 @@
 ---
 name: document_expiry_validator
 description: Verificar fecha de expiración del documento de identidad y países/tipos soportados
+type: Algorithm
+priority: Esencial
+mode: Self-hosted
 ---
 
 # document_expiry_validator

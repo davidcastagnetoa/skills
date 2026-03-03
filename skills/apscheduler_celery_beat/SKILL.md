@@ -1,6 +1,9 @@
 ---
 name: apscheduler_celery_beat
 description: Eliminación automática programada de datos biométricos tras TTL y tareas de mantenimiento periódicas
+type: Library
+priority: Esencial
+mode: Self-hosted
 ---
 
 # apscheduler_celery_beat

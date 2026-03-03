@@ -1,6 +1,9 @@
 ---
 name: owasp_top10_mitigations
 description: Implementar protecciones estándar contra las vulnerabilidades más comunes del OWASP Top 10
+type: Algorithm
+priority: Esencial
+mode: Self-hosted
 ---
 
 # owasp_top10_mitigations

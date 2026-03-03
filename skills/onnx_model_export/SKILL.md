@@ -1,6 +1,9 @@
 ---
 name: onnx_model_export
 description: Exportar modelos PyTorch del pipeline KYC a formato ONNX para portabilidad y optimización
+type: Algorithm
+priority: Esencial
+mode: Self-hosted
 ---
 
 # onnx_model_export

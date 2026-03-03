@@ -1,6 +1,9 @@
 ---
 name: asyncpg
 description: Cliente PostgreSQL async de alto rendimiento para el backend FastAPI del pipeline KYC
+type: Library
+priority: Esencial
+mode: Self-hosted
 ---
 
 # asyncpg

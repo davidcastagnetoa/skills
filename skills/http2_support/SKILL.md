@@ -1,6 +1,9 @@
 ---
 name: http2_support
 description: Multiplexación de conexiones HTTP/2 para reducir latencia en uploads de imágenes
+type: Protocol
+priority: Esencial
+mode: Self-hosted
 ---
 
 # http2_support

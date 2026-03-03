@@ -1,6 +1,9 @@
 ---
 name: alembic
 description: Migraciones de base de datos versionadas para evolucionar el schema del pipeline KYC
+type: Tool
+priority: Esencial
+mode: Self-hosted
 ---
 
 # alembic

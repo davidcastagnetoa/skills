@@ -1,6 +1,9 @@
 ---
 name: postgresql_16
 description: PostgreSQL 16 como base de datos principal del sistema KYC de verificación de identidad
+type: Framework
+priority: Esencial
+mode: Self-hosted
 ---
 
 # postgresql_16

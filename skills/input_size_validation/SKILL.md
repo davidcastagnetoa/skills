@@ -1,6 +1,9 @@
 ---
 name: input_size_validation
 description: Rechazo de payloads que excedan el tamaño máximo permitido para prevenir ataques DoS
+type: Algorithm
+priority: Esencial
+mode: Self-hosted
 ---
 
 # input_size_validation

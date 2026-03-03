@@ -1,6 +1,9 @@
 ---
 name: celery_canvas
 description: Composición de workflows complejos con dependencias paralelas y secuenciales usando Celery Canvas
+type: Framework
+priority: Esencial
+mode: Self-hosted
 ---
 
 # celery_canvas

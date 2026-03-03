@@ -1,6 +1,9 @@
 ---
 name: security_headers
 description: Headers de seguridad HTTP obligatorios para proteger el frontend KYC de ataques comunes
+type: Protocol
+priority: Esencial
+mode: Self-hosted
 ---
 
 # security_headers

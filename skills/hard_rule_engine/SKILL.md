@@ -1,6 +1,9 @@
 ---
 name: hard_rule_engine
 description: Reglas de rechazo/aprobación inmediata independientes del score global para casos deterministas
+type: Algorithm
+priority: Esencial
+mode: Self-hosted
 ---
 
 # hard_rule_engine

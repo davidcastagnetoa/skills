@@ -1,6 +1,12 @@
 ---
 name: chaos_toolkit
 description: Inyectar fallos controlados en staging para validar resiliencia
+type: Tool
+priority: Opcional
+mode: Self-hosted
+type: Tool
+priority: Opcional
+mode: Self-hosted
 ---
 
 # chaos_toolkit

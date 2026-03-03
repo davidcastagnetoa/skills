@@ -1,6 +1,9 @@
 ---
 name: easyocr
 description: OCR alternativo a PaddleOCR, excelente en caracteres especiales y múltiples scripts
+type: ML Model
+priority: Recomendada
+mode: Self-hosted
 ---
 
 # easyocr

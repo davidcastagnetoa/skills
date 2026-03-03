@@ -1,6 +1,9 @@
 ---
 name: mediapipe_face_alignment
 description: Alinear rostros por landmarks antes de generar embeddings — crítico para precisión de ArcFace
+type: ML Model
+priority: Esencial
+mode: Self-hosted
 ---
 
 # mediapipe_face_alignment

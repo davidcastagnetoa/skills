@@ -1,6 +1,9 @@
 ---
 name: json_schema_evolution
 description: Garantizar backwards-compatibility al evolucionar contratos entre agentes
+type: Algorithm
+priority: Esencial
+mode: Self-hosted
 ---
 
 # json_schema_evolution

@@ -1,6 +1,9 @@
 ---
 name: mediapipe_face_detection
 description: Verificar presencia de exactamente un rostro en la selfie antes de procesarla
+type: ML Model
+priority: Esencial
+mode: Self-hosted
 ---
 
 # mediapipe_face_detection

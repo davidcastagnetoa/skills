@@ -1,6 +1,9 @@
 ---
 name: adr_tools
 description: Herramienta CLI para gestionar Architecture Decision Records con numeración automática y linking
+type: Tool
+priority: Recomendada
+mode: Self-hosted
 ---
 
 # adr_tools

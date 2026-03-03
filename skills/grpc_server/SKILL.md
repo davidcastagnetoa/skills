@@ -1,6 +1,9 @@
 ---
 name: grpc_server
 description: Servidor gRPC de alto rendimiento para comunicación entre microservicios de inferencia ML del pipeline KYC
+type: Protocol
+priority: Esencial
+mode: Self-hosted
 ---
 
 # grpc_server

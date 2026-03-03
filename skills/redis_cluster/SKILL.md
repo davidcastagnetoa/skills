@@ -1,6 +1,9 @@
 ---
 name: redis_cluster
 description: Sharding horizontal para escalar Redis más allá de un nodo
+type: Tool
+priority: Recomendada
+mode: Self-hosted
 ---
 
 # redis_cluster

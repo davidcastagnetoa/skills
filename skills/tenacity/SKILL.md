@@ -1,6 +1,9 @@
 ---
 name: tenacity
 description: Retry con backoff exponencial y circuit breaker para llamadas entre microservicios KYC
+type: Library
+priority: Esencial
+mode: Self-hosted
 ---
 
 # tenacity
@@ -14,15 +17,18 @@ Utilizar esta skill cuando el health_monitor_agent necesite configurar o mejorar
 ## Instructions
 
 1. Instalar la libreria tenacity y agregarla a los requirements del proyecto:
+
 ```bash
 pip install tenacity
 ```
+
 ```python
 # requirements.txt
 tenacity>=8.2.0
 ```
 
 2. Configurar el decorador de retry basico con backoff exponencial y jitter para llamadas entre microservicios:
+
 ```python
 from tenacity import (
     retry, stop_after_attempt, wait_exponential_jitter,
@@ -49,6 +55,7 @@ async def call_face_match_service(selfie_data: bytes, doc_face_data: bytes) -> d
 ```
 
 3. Implementar un circuit breaker usando tenacity para proteger servicios de inferencia ML sobrecargados:
+
 ```python
 from tenacity import retry, stop_after_attempt, wait_fixed, CircuitBreaker
 
@@ -75,6 +82,7 @@ async def call_with_circuit_breaker(service_url: str, payload: dict) -> dict:
 ```
 
 4. Crear configuraciones de retry diferenciadas por tipo de servicio del pipeline KYC:
+
 ```python
 # Servicios ML (GPU-bound): mas reintentos, waits mas largos
 ML_RETRY_CONFIG = {
@@ -99,6 +107,7 @@ OCR_RETRY_CONFIG = {
 ```
 
 5. Implementar callbacks para registrar metricas de reintentos en Prometheus:
+
 ```python
 from tenacity import after_log, before_sleep_log
 from prometheus_client import Counter, Histogram
@@ -119,6 +128,7 @@ async def call_liveness_service(frames: list[bytes]) -> dict:
 ```
 
 6. Configurar excepciones especificas que NO deben reintentar (errores de negocio vs errores transitorios):
+
 ```python
 from tenacity import retry_if_not_exception_type
 
@@ -140,6 +150,7 @@ async def call_ocr_service(document_image: bytes) -> dict:
 ```
 
 7. Implementar un wrapper reutilizable con circuit breaker integrado para todos los servicios del pipeline:
+
 ```python
 class ResilientServiceClient:
     def __init__(self, service_name: str, base_url: str, retry_config: dict):

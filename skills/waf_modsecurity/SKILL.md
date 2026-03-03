@@ -1,6 +1,9 @@
 ---
 name: waf_modsecurity
 description: Web Application Firewall para detectar y bloquear ataques SQL injection, XSS y otros OWASP Top 10
+type: Tool
+priority: Esencial
+mode: Self-hosted
 ---
 
 # waf_modsecurity

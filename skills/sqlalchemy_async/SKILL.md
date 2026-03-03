@@ -1,6 +1,9 @@
 ---
 name: sqlalchemy_async
 description: ORM async moderno con SQLAlchemy 2.0 para modelar entidades de verificación KYC
+type: Library
+priority: Esencial
+mode: Self-hosted
 ---
 
 # sqlalchemy_async

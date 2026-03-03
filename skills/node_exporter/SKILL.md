@@ -1,6 +1,9 @@
 ---
 name: node_exporter
 description: Exportador de metricas de sistema para correlacionar recursos del nodo con rendimiento KYC
+type: Tool
+priority: Esencial
+mode: Self-hosted
 ---
 
 # node_exporter

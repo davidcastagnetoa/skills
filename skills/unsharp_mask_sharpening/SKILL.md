@@ -1,6 +1,9 @@
 ---
 name: unsharp_mask_sharpening
 description: Aumentar nitidez del texto del documento con Unsharp Mask para maximizar la precisión del OCR
+type: Algorithm
+priority: Esencial
+mode: Self-hosted
 ---
 
 # unsharp_mask_sharpening

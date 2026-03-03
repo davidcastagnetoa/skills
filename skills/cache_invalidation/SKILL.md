@@ -1,6 +1,9 @@
 ---
 name: cache_invalidation
 description: Invalidación activa de claves cuando los datos subyacentes cambian
+type: Algorithm
+priority: Esencial
+mode: Self-hosted
 ---
 
 # cache_invalidation

@@ -1,6 +1,9 @@
 ---
 name: breaking_change_detector
 description: Detectar automáticamente breaking changes entre versiones de schema en CI/CD
+type: Algorithm
+priority: Esencial
+mode: Self-hosted
 ---
 
 # breaking_change_detector

@@ -1,6 +1,9 @@
 ---
 name: minifasnet
 description: Modelo ligero de anti-spoofing optimizado para producción — alta velocidad con buena precisión
+type: ML Model
+priority: Esencial
+mode: Self-hosted
 ---
 
 # minifasnet

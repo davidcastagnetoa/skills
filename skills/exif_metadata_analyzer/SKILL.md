@@ -1,6 +1,9 @@
 ---
 name: exif_metadata_analyzer
 description: Analizar metadatos EXIF para detectar edición previa con Photoshop, GIMP u otros editores
+type: Library
+priority: Recomendada
+mode: Self-hosted
 ---
 
 # exif_metadata_analyzer

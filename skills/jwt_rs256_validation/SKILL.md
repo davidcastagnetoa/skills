@@ -1,6 +1,9 @@
 ---
 name: jwt_rs256_validation
 description: Validación de tokens JWT firmados con RS256 (clave pública) para autenticación de clientes
+type: Algorithm
+priority: Esencial
+mode: Self-hosted
 ---
 
 # jwt_rs256_validation

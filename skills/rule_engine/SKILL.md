@@ -1,6 +1,9 @@
 ---
 name: rule_engine
 description: Motor de reglas de negocio configurables sin redeploy usando rule-engine o durable-rules
+type: Library
+priority: Recomendada
+mode: Self-hosted
 ---
 
 # rule_engine

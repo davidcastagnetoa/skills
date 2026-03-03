@@ -1,6 +1,9 @@
 ---
 name: timeout_manager
 description: Gestión de timeouts por agente con cancelación limpia para cumplir el SLO de 8 segundos
+type: Library
+priority: Esencial
+mode: Self-hosted
 ---
 
 # timeout_manager

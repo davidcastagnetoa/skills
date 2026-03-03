@@ -1,6 +1,9 @@
 ---
 name: weighted_score_aggregator
 description: Algoritmo de agregación ponderada de scores parciales en score global de verificación
+type: Algorithm
+priority: Esencial
+mode: Self-hosted
 ---
 
 # weighted_score_aggregator

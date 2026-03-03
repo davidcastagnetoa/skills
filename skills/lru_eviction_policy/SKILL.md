@@ -1,6 +1,9 @@
 ---
 name: lru_eviction_policy
 description: Gestión de memoria evictando datos menos usados cuando se llena la memoria
+type: Algorithm
+priority: Esencial
+mode: Self-hosted
 ---
 
 # lru_eviction_policy

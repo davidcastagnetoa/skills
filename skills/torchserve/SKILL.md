@@ -1,6 +1,9 @@
 ---
 name: torchserve
 description: Servidor de modelos PyTorch para inferencia de modelos de verificación de identidad con batching y versionado
+type: Tool
+priority: Recomendada
+mode: Self-hosted
 ---
 
 # torchserve
@@ -14,11 +17,13 @@ Usa esta skill cuando necesites desplegar o configurar el servidor de inferencia
 ## Instructions
 
 1. Instalar TorchServe y sus dependencias:
+
    ```bash
    pip install torchserve torch-model-archiver torch-workflow-archiver
    ```
 
 2. Empaquetar cada modelo como un MAR (Model Archive) usando `torch-model-archiver`:
+
    ```bash
    torch-model-archiver --model-name arcface \
      --version 1.0 \
@@ -29,6 +34,7 @@ Usa esta skill cuando necesites desplegar o configurar el servidor de inferencia
    ```
 
 3. Configurar el archivo `config.properties` con batching dinámico, número de workers y puertos:
+
    ```properties
    inference_address=http://0.0.0.0:8080
    management_address=http://0.0.0.0:8081
@@ -42,6 +48,7 @@ Usa esta skill cuando necesites desplegar o configurar el servidor de inferencia
 4. Crear handlers personalizados para cada tipo de modelo (liveness, face_match, anti-spoofing) que implementen `initialize()`, `preprocess()`, `inference()` y `postprocess()`.
 
 5. Iniciar TorchServe con el model store y la configuración:
+
    ```bash
    torchserve --start --model-store model_store/ \
      --ts-config config.properties \
@@ -49,11 +56,13 @@ Usa esta skill cuando necesites desplegar o configurar el servidor de inferencia
    ```
 
 6. Registrar nuevas versiones de modelos en caliente mediante la Management API:
+
    ```bash
    curl -X POST "http://localhost:8081/models?url=arcface_v2.mar&model_name=arcface&initial_workers=2"
    ```
 
 7. Configurar métricas de Prometheus para monitorear latencia de inferencia, throughput y errores por modelo:
+
    ```properties
    metrics_mode=prometheus
    metrics_format=prometheus
