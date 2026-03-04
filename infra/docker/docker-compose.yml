@@ -1,9 +1,30 @@
 services:
+  # --- Nginx API Gateway ---
+  nginx:
+    build:
+      context: ../nginx
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      AUTH_BYPASS: "true"  # Set to "false" in production
+      JWT_ENABLED: "false"
+      API_KEY_ENABLED: "false"
+    depends_on:
+      - api
+    volumes:
+      - ../nginx/nginx.conf:/usr/local/openresty/nginx/conf/nginx.conf:ro
+      - ../nginx/lua:/etc/nginx/lua:ro
+    restart: unless-stopped
+
   # --- FastAPI Backend ---
   api:
     build:
       context: ../../backend
       dockerfile: Dockerfile
+    expose:
+      - "8000"
     ports:
       - "8000:8000"
     env_file:

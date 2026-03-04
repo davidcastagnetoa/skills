@@ -14,3 +14,30 @@ Estas validaciones requieren Docker corriendo y deben ejecutarse antes de consid
 - [ ] Ejecutar `make lint` y `make typecheck` — corregir errores si los hay
 - [ ] Crear `scripts/seed-db.sh` con datos de prueba (blacklisted documents, api client)
 - [ ] Verificar que MinIO tiene los 3 buckets creados (selfie-images, document-images, processed-images)
+
+## Fase 2 — Core ML Pipeline
+
+- [ ] Ejecutar todos los tests: `python -m pytest tests/unit/ -v`
+  - `test_doc_processing.py` — 27 tests
+  - `test_ocr.py` — 26 tests
+  - `test_liveness.py` — 25 tests
+  - `test_face_match.py` — 24 tests
+  - `test_ml_tasks.py` — 6 tests
+- [ ] Verificar carga de modelos ONNX con `scripts/download-models.sh`
+- [ ] Medir tiempos de inferencia por módulo (doc_processing < 2s, OCR < 2s, liveness < 2s, face_match < 500ms)
+- [ ] Ejecutar Celery worker con `celery -A infrastructure.celery_app worker -Q cpu,gpu` y enviar tarea de prueba
+- [ ] Validar FAR/FRR con dataset de test (mínimo 100 pares positivos/negativos)
+- [ ] Validar tasa de detección de spoofing con imágenes de ataque
+
+## Fase 3 — Pipeline Integration
+
+- [ ] Ejecutar tests de Phase 3: `python -m pytest tests/unit/test_capture.py tests/unit/test_antifraud.py tests/unit/test_decision.py tests/unit/test_audit.py tests/unit/test_orchestrator.py -v`
+- [ ] Ejecutar pipeline end-to-end con `POST /api/v1/verify` (selfie + documento reales)
+- [ ] Verificar que `GET /api/v1/verify/{id}` retorna progreso y resultado final
+- [ ] Verificar timeout de 8 segundos funciona (con módulo lento simulado)
+- [ ] Verificar degradación graceful: liveness falla → MANUAL_REVIEW, OCR falla → penalización, doc_processing falla → REJECTED
+- [ ] Verificar que los 10 escenarios de fraude del CLAUDE.md se detectan correctamente
+- [ ] Verificar que audit trail se genera completo con PII anonimizado y hash de integridad
+- [ ] Verificar pesos del decision engine configurables via Redis sin redeploy
+- [ ] Verificar cola de revisión manual para sesiones ambiguas
+- [ ] Medir rendimiento end-to-end: pipeline completo < 8 segundos

@@ -15,22 +15,22 @@
 
 ### Tareas
 
-- [ ] Configurar Nginx como reverse proxy:
+- [x] Configurar Nginx como reverse proxy:
   - Terminacion TLS 1.3 con certificados Let's Encrypt (dev: self-signed).
   - Upstream hacia el servicio FastAPI.
   - HTTP/2 habilitado.
 
-- [ ] Implementar autenticacion en Nginx Lua:
+- [x] Implementar autenticacion en Nginx Lua:
   - Validacion de JWT (RS256) en cada request.
   - Validacion de API Keys para clientes server-to-server.
   - Cache de claves publicas JWT en shared memory.
 
-- [ ] Implementar rate limiting en Nginx:
+- [x] Implementar rate limiting en Nginx:
   - Sliding window por IP: configurable (default 60 req/min).
   - Rate limit especifico para `/api/v1/verify`: 10 req/min por IP.
   - Headers de respuesta: X-RateLimit-Remaining, X-RateLimit-Reset.
 
-- [ ] Configurar headers de seguridad:
+- [x] Configurar headers de seguridad:
   ```nginx
   add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
   add_header X-Content-Type-Options "nosniff" always;
@@ -40,20 +40,20 @@
   add_header Referrer-Policy "strict-origin-when-cross-origin" always;
   ```
 
-- [ ] Configurar CORS por entorno (development vs production).
+- [x] Configurar CORS por entorno (development vs production).
 
-- [ ] Implementar circuit breaker por Lua:
+- [x] Implementar circuit breaker por Lua:
   - Rastrear tasa de errores 5xx por upstream.
   - Abrir circuito si > 50% errores en ventana de 30s.
   - Retornar 503 con mensaje descriptivo cuando circuito abierto.
 
-- [ ] Configurar compresion gzip/brotli para respuestas JSON.
+- [x] Configurar compresion gzip/brotli para respuestas JSON.
 
-- [ ] Configurar logging JSON estructurado por request.
+- [x] Configurar logging JSON estructurado por request.
 
-- [ ] Limitar tamano maximo de request body (10MB para imagenes).
+- [x] Limitar tamano maximo de request body (10MB para imagenes).
 
-- [ ] Agregar Nginx al docker-compose y al Dockerfile.
+- [x] Agregar Nginx al docker-compose y al Dockerfile.
 
 ### Checkpoint 4.1
 > Resultado esperado: Nginx proxea al backend con TLS, JWT validation, rate limiting y headers de seguridad. Circuit breaker funciona ante fallos del upstream.

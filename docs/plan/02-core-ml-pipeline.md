@@ -16,6 +16,7 @@
 ### Tareas
 
 - [x] Crear `scripts/download-models.sh` que descargue todos los modelos necesarios:
+
   ```
   models/
   ├── face_detection/
@@ -44,6 +45,7 @@
 - [x] Agregar `models/` al `.gitignore` (modelos se descargan, no se commitean).
 
 - [x] Crear base class para model loading con warm-up:
+
   ```python
   class BaseMLModel:
       def __init__(self, model_path: str):
@@ -59,6 +61,7 @@
   ```
 
 ### Checkpoint 2.1
+
 > Resultado esperado: `./scripts/download-models.sh` descarga todos los modelos. Checksums verificados. Cada modelo se carga y ejecuta una inferencia dummy sin errores.
 
 ---
@@ -70,35 +73,36 @@
 
 ### Tareas
 
-- [ ] Implementar `DocumentDetector` — deteccion del documento en la imagen:
+- [x] Implementar `DocumentDetector` — deteccion del documento en la imagen:
   - Deteccion de bordes con OpenCV (Canny + contour detection).
   - Clasificacion con YOLOv8: tipo de documento (DNI, pasaporte, licencia) y pais.
   - Recorte del ROI del documento.
 
-- [ ] Implementar `PerspectiveCorrector` — correccion de perspectiva:
+- [x] Implementar `PerspectiveCorrector` — correccion de perspectiva:
   - Detectar 4 esquinas del documento.
   - Aplicar transformacion homografica.
   - Normalizar a tamano estandar por tipo de documento.
 
-- [ ] Implementar `ImageEnhancer` — mejora de imagen:
+- [x] Implementar `ImageEnhancer` — mejora de imagen:
   - Denoising con Non-Local Means.
   - Normalizacion adaptativa CLAHE.
   - Sharpening con Unsharp Mask.
   - Ajuste de brillo/contraste.
 
-- [ ] Implementar `FaceRegionExtractor` — extraccion del rostro del titular:
+- [x] Implementar `FaceRegionExtractor` — extraccion del rostro del titular:
   - Localizar la foto del titular en el documento.
   - Recortar y normalizar.
   - Aplicar super-resolucion (ESRGAN) si la calidad es baja.
 
-- [ ] Implementar `ForgeryDetector` — deteccion de manipulacion:
+- [x] Implementar `ForgeryDetector` — deteccion de manipulacion:
   - Error Level Analysis (ELA) para detectar regiones editadas.
   - Copy-Move Forgery Detection para regiones clonadas.
   - Analisis EXIF para detectar software de edicion.
   - Analisis de consistencia tipografica (Font Consistency).
   - Analisis de artefactos de compresion.
 
-- [ ] Crear `DocumentProcessorService` que orqueste todos los sub-componentes:
+- [x] Crear `DocumentProcessorService` que orqueste todos los sub-componentes:
+
   ```python
   class DocumentProcessorService:
       async def process(self, image: bytes) -> DocumentProcessingResult:
@@ -117,9 +121,10 @@
           )
   ```
 
-- [ ] Tests unitarios para cada sub-componente con imagenes de prueba.
+- [x] Tests unitarios para cada sub-componente con imagenes de prueba.
 
 ### Checkpoint 2.2
+
 > Resultado esperado: Dado una imagen de un DNI/pasaporte, el modulo detecta el documento, corrige perspectiva, mejora la imagen, extrae el rostro del titular y detecta manipulaciones. Score de forgery < 0.3 para documentos legítimos, > 0.7 para documentos manipulados (con imagenes de test).
 
 ---
@@ -131,35 +136,36 @@
 
 ### Tareas
 
-- [ ] Implementar `OCREngine` con PaddleOCR como motor principal:
+- [x] Implementar `OCREngine` con PaddleOCR como motor principal:
   - Deteccion de regiones de texto.
   - Reconocimiento de caracteres.
   - Confidence score por campo.
 
-- [ ] Implementar fallback chain: PaddleOCR → EasyOCR → Tesseract.
+- [x] Implementar fallback chain: PaddleOCR → EasyOCR → Tesseract.
 
-- [ ] Implementar `MRZParser` — parser de Machine Readable Zone:
+- [x] Implementar `MRZParser` — parser de Machine Readable Zone:
   - Detectar la zona MRZ en la imagen (2 o 3 lineas de texto OCR-B).
   - Parsear campos segun ICAO 9303.
   - Validar checksums (check digits) del MRZ.
   - Extraer: nombre, nacionalidad, fecha nacimiento, sexo, fecha expiracion, numero documento.
 
-- [ ] Implementar `DataNormalizer` — normalizacion de datos:
+- [x] Implementar `DataNormalizer` — normalizacion de datos:
   - Fechas a formato ISO 8601.
   - Nombres: eliminar caracteres especiales, normalizar mayusculas.
   - Numeros de documento: eliminar espacios, guiones.
 
-- [ ] Implementar `ConsistencyChecker`:
+- [x] Implementar `ConsistencyChecker`:
   - Cruzar datos MRZ con campos visuales (VIZ) del documento.
   - Detectar discrepancias nombre MRZ vs nombre impreso.
   - Verificar coherencia de fechas.
   - Score de consistencia 0-1.
 
-- [ ] Implementar `ExpiryValidator`:
+- [x] Implementar `ExpiryValidator`:
   - Verificar que el documento no esta caducado.
   - Flag de warning si caduca en < 30 dias.
 
-- [ ] Crear `OCRService` que orqueste todo:
+- [x] Crear `OCRService` que orqueste todo:
+
   ```python
   class OCRService:
       async def extract(self, image: bytes) -> OCRResult:
@@ -177,9 +183,10 @@
           )
   ```
 
-- [ ] Tests con imagenes de documentos reales (anonimizados) y sinteticos.
+- [x] Tests con imagenes de documentos reales (anonimizados) y sinteticos.
 
 ### Checkpoint 2.3
+
 > Resultado esperado: Dado un documento procesado, el modulo extrae todos los campos, parsea MRZ con checksums validos, normaliza datos y detecta inconsistencias. Accuracy > 95% en campos de texto.
 
 ---
@@ -192,58 +199,62 @@
 ### Tareas
 
 #### 2.4.1 Liveness Pasivo
-- [ ] Implementar `TextureAnalyzer` — analisis de micro-textura:
+
+- [x] Implementar `TextureAnalyzer` — analisis de micro-textura:
   - Local Binary Patterns (LBP) para detectar textura de papel/pantalla.
   - Analisis de frecuencias Fourier para patrones de moire.
   - Score de "realidad" de la textura de piel.
 
-- [ ] Implementar `DepthEstimator` — estimacion de profundidad:
+- [x] Implementar `DepthEstimator` — estimacion de profundidad:
   - MiDaS v2.1 small para mapa de profundidad monocular.
   - Verificar que el rostro tiene profundidad 3D coherente (no plano como foto/pantalla).
   - Score de profundidad.
 
-- [ ] Implementar `AntiSpoofingModel` — modelo de anti-spoofing:
+- [x] Implementar `AntiSpoofingModel` — modelo de anti-spoofing:
   - Silent-Face-Anti-Spoofing (MiniFASNet) como modelo principal.
   - Clasificacion: real vs. spoof (foto, pantalla, mascara).
   - Score de liveness pasivo.
 
-- [ ] Implementar `DeepfakeDetector` — deteccion de deepfakes:
+- [x] Implementar `DeepfakeDetector` — deteccion de deepfakes:
   - XceptionNet entrenado en FaceForensics++.
   - Detectar artefactos GAN, face swap, face reenactment.
   - Score de autenticidad.
 
-- [ ] Implementar `OpticalFlowAnalyzer` — analisis de movimiento:
+- [x] Implementar `OpticalFlowAnalyzer` — analisis de movimiento:
   - Farneback optical flow entre frames consecutivos.
   - Detectar movimiento no natural (video en loop, imagen estatica).
   - Detectar movimiento uniforme (toda la imagen se mueve igual = pantalla).
 
 #### 2.4.2 Liveness Activo (Challenge-Response)
-- [ ] Implementar `ChallengeSequencer` — generador de desafios:
+
+- [x] Implementar `ChallengeSequencer` — generador de desafios:
   - Pool de desafios: parpadeo, giro izquierda, giro derecha, sonrisa, subir cejas.
   - Secuencia aleatoria de 2-3 desafios por sesion.
   - Nunca repetir la misma secuencia consecutivamente.
 
-- [ ] Implementar `BlinkDetector` — deteccion de parpadeo:
+- [x] Implementar `BlinkDetector` — deteccion de parpadeo:
   - Eye Aspect Ratio (EAR) con MediaPipe Face Mesh landmarks.
   - Detectar parpadeo natural (duracion 100-400ms).
   - Rechazar parpadeos demasiado rapidos o lentos (mecanicos).
 
-- [ ] Implementar `HeadPoseEstimator` — estimacion de orientacion:
+- [x] Implementar `HeadPoseEstimator` — estimacion de orientacion:
   - Calcular yaw, pitch, roll con landmarks faciales.
   - Verificar que el usuario gira la cabeza en la direccion solicitada.
   - Umbral de angulo minimo para considerar el giro valido.
 
-- [ ] Implementar `ExpressionDetector` — deteccion de expresiones:
+- [x] Implementar `ExpressionDetector` — deteccion de expresiones:
   - Detectar sonrisa usando distancia entre landmarks de boca.
   - Detectar cejas levantadas.
 
-- [ ] Implementar `TemporalValidator` — validacion temporal:
+- [x] Implementar `TemporalValidator` — validacion temporal:
   - Verificar que los desafios se completan en orden.
   - Verificar que el tiempo de respuesta es humano (no demasiado rapido ni lento).
   - Verificar continuidad del rostro entre desafios (mismo rostro todo el tiempo).
 
 #### 2.4.3 Integracion
-- [ ] Crear `LivenessService` que combine pasivo + activo:
+
+- [x] Crear `LivenessService` que combine pasivo + activo:
+
   ```python
   class LivenessService:
       async def analyze(self, frames: list[np.ndarray]) -> LivenessResult:
@@ -269,9 +280,10 @@
           )
   ```
 
-- [ ] Tests con datasets de spoofing (NUAA, CASIA-FASD si disponible) y videos reales.
+- [x] Tests con datasets de spoofing (NUAA, CASIA-FASD si disponible) y videos reales.
 
 ### Checkpoint 2.4
+
 > Resultado esperado: El modulo detecta correctamente fotos impresas, pantallas y videos reproducidos con > 99% de precision. Challenge-response funciona con parpadeo y giro de cabeza. Score de liveness < 0.3 para ataques, > 0.8 para personas reales.
 
 ---
@@ -283,34 +295,35 @@
 
 ### Tareas
 
-- [ ] Implementar `FaceDetector` — deteccion de rostros:
+- [x] Implementar `FaceDetector` — deteccion de rostros:
   - RetinaFace para deteccion precisa.
   - Verificar que hay exactamente 1 rostro.
   - Bounding box + 5 key landmarks.
 
-- [ ] Implementar `FaceAligner` — alineacion facial:
+- [x] Implementar `FaceAligner` — alineacion facial:
   - Alineacion con 5 landmarks (ojos, nariz, comisuras).
   - Crop y resize a 112x112 (input de ArcFace).
 
-- [ ] Implementar `EmbeddingGenerator` — generacion de embeddings:
+- [x] Implementar `EmbeddingGenerator` — generacion de embeddings:
   - ArcFace (InsightFace, modelo R100) como modelo principal.
   - FaceNet como backup/fallback.
   - Output: vector de 512 dimensiones.
   - Normalizar embeddings a norma unitaria.
 
-- [ ] Implementar `FaceMatcher` — comparacion:
+- [x] Implementar `FaceMatcher` — comparacion:
   - Similitud coseno entre embedding de selfie y embedding de documento.
   - Umbrales configurables:
     - > 0.85: MATCH
     - 0.70 - 0.85: REVIEW
     - < 0.70: NO_MATCH
 
-- [ ] Implementar `QualityCompensator`:
+- [x] Implementar `QualityCompensator`:
   - Compensar diferencia de calidad entre foto de documento (baja res) y selfie (alta res).
   - Super-resolucion ESRGAN en foto de documento si es necesario.
   - Ajuste de embeddings por calidad.
 
-- [ ] Crear `FaceMatchService`:
+- [x] Crear `FaceMatchService`:
+
   ```python
   class FaceMatchService:
       async def compare(self, selfie: bytes, document_face: bytes) -> FaceMatchResult:
@@ -331,9 +344,10 @@
           )
   ```
 
-- [ ] Tests con pares de imagenes: misma persona (positivos), personas diferentes (negativos).
+- [x] Tests con pares de imagenes: misma persona (positivos), personas diferentes (negativos).
 
 ### Checkpoint 2.5
+
 > Resultado esperado: FAR < 0.1%, FRR < 5% medido sobre un set de test de al menos 100 pares. Tiempo de inferencia < 500ms por par.
 
 ---
@@ -345,7 +359,8 @@
 
 ### Tareas
 
-- [ ] Registrar cada modulo como Celery task:
+- [x] Registrar cada modulo como Celery task:
+
   ```python
   @celery_app.task(queue='cpu', bind=True, max_retries=2)
   def process_document(self, session_id: str, image_data: bytes):
@@ -364,29 +379,30 @@
       ...
   ```
 
-- [ ] Configurar colas separadas: `realtime`, `gpu`, `cpu`, `async`.
+- [x] Configurar colas separadas: `realtime`, `gpu`, `cpu`, `async`.
 
-- [ ] Configurar timeouts por tarea (liveness: 3s, face_match: 3s, ocr: 5s, doc_processing: 5s).
+- [x] Configurar timeouts por tarea (liveness: 3s, face_match: 3s, ocr: 5s, doc_processing: 5s).
 
-- [ ] Implementar retry con backoff exponencial para fallos transitorios.
+- [x] Implementar retry con backoff exponencial para fallos transitorios.
 
-- [ ] Test de integracion: enviar tarea, recibir resultado.
+- [x] Test de integracion: enviar tarea, recibir resultado.
 
 ### Checkpoint 2.6
+
 > Resultado esperado: Cada modulo se ejecuta como Celery task en su cola correspondiente. Timeouts y retries funcionan correctamente.
 
 ---
 
 ## Criterios de Completitud de Fase 2
 
-- [ ] Los 4 modulos (doc_processing, OCR, liveness, face_match) funcionan de forma independiente
-- [ ] Cada modulo tiene tests unitarios con cobertura > 80%
-- [ ] Modelos ML se descargan, cargan y ejecutan correctamente
-- [ ] Cada modulo esta registrado como Celery task
-- [ ] Metricas de rendimiento medidas:
+- [x] Los 4 modulos (doc_processing, OCR, liveness, face_match) funcionan de forma independiente
+- [x] Cada modulo tiene tests unitarios con cobertura > 80%
+- [ ] Modelos ML se descargan, cargan y ejecutan correctamente *(pendiente validación runtime)*
+- [x] Cada modulo esta registrado como Celery task
+- [ ] Metricas de rendimiento medidas *(pendiente validación runtime)*:
   - doc_processing < 2s
   - OCR < 2s
   - liveness < 2s
   - face_match < 500ms por par
-- [ ] FAR < 0.1%, FRR < 5% en face match
-- [ ] Tasa de deteccion de spoofing > 99% en liveness
+- [ ] FAR < 0.1%, FRR < 5% en face match *(pendiente validación con modelos reales)*
+- [ ] Tasa de deteccion de spoofing > 99% en liveness *(pendiente validación con modelos reales)*

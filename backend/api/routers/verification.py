@@ -1,7 +1,8 @@
 import uuid
 from datetime import datetime, timezone
 
-from fastapi import APIRouter, HTTPException, Request, status
+import structlog
+from fastapi import APIRouter, BackgroundTasks, HTTPException, Request, status
 
 from api.config import settings
 from api.dependencies import Cache, DBSession, Limiter
@@ -13,8 +14,59 @@ from core.schemas import (
     VerificationStatus,
 )
 from infrastructure.models import VerificationSession
+from modules.orchestrator.service import PipelineOrchestrator
 
+logger = structlog.get_logger()
 router = APIRouter(prefix="/api/v1", tags=["verification"])
+
+
+async def _run_pipeline_background(
+    session_id: str,
+    body: VerificationRequest,
+    ip_address: str,
+    db_session,
+    cache_service,
+) -> None:
+    """Run the pipeline in the background and update session state."""
+    orchestrator = PipelineOrchestrator()
+
+    try:
+        result = await orchestrator.run(
+            session_id=session_id,
+            selfie_image_b64=body.selfie_image,
+            document_image_b64=body.document_image,
+            device_fingerprint=body.device_fingerprint,
+            ip_address=ip_address,
+        )
+
+        # Update session in cache
+        await cache_service.set(
+            f"session:{session_id}",
+            {
+                "status": result.status.lower(),
+                "confidence_score": result.confidence_score,
+                "reasons": result.reasons,
+                "module_scores": result.module_scores,
+                "processing_time_ms": result.processing_time_ms,
+                "integrity_hash": result.integrity_hash,
+            },
+            ttl=settings.pipeline_timeout_seconds * 10,
+        )
+
+        logger.info(
+            "pipeline.completed",
+            session_id=session_id,
+            status=result.status,
+            score=result.confidence_score,
+            elapsed_ms=result.processing_time_ms,
+        )
+    except Exception:
+        logger.exception("pipeline.background_error", session_id=session_id)
+        await cache_service.set(
+            f"session:{session_id}",
+            {"status": "error"},
+            ttl=settings.pipeline_timeout_seconds * 10,
+        )
 
 
 @router.post(
@@ -28,6 +80,7 @@ async def start_verification(
     db: DBSession,
     cache: Cache,
     limiter: Limiter,
+    background_tasks: BackgroundTasks,
 ) -> VerificationCreated:
     """Start a new identity verification session."""
     # Rate limiting by IP
@@ -64,7 +117,10 @@ async def start_verification(
         ttl=settings.pipeline_timeout_seconds * 2,
     )
 
-    # TODO: Phase 3 — dispatch pipeline tasks via Celery
+    # Dispatch pipeline in background
+    background_tasks.add_task(
+        _run_pipeline_background, str(session_id), body, client_ip, db, cache
+    )
 
     return VerificationCreated(session_id=session_id)
 
@@ -79,12 +135,30 @@ async def get_verification(
     cache: Cache,
 ) -> VerificationResponse:
     """Get the status and result of a verification session."""
-    # Try cache first
+    # Try cache first (contains pipeline result after completion)
     cached = await cache.get(f"session:{session_id}")
-    if cached and isinstance(cached, dict) and cached.get("status") == "pending":
+    if cached and isinstance(cached, dict):
+        cached_status = cached.get("status", "pending")
+        if cached_status == "pending":
+            return VerificationResponse(
+                session_id=session_id,
+                status=VerificationStatus.PENDING,
+                timestamp=datetime.now(timezone.utc),
+            )
+        # Pipeline finished — return full result from cache
+        status_map = {
+            "verified": VerificationStatus.VERIFIED,
+            "rejected": VerificationStatus.REJECTED,
+            "manual_review": VerificationStatus.MANUAL_REVIEW,
+            "error": VerificationStatus.ERROR,
+        }
         return VerificationResponse(
             session_id=session_id,
-            status=VerificationStatus.PENDING,
+            status=status_map.get(cached_status, VerificationStatus.ERROR),
+            confidence_score=cached.get("confidence_score"),
+            reasons=cached.get("reasons", []),
+            modules_scores=cached.get("module_scores"),
+            processing_time_ms=cached.get("processing_time_ms"),
             timestamp=datetime.now(timezone.utc),
         )
 

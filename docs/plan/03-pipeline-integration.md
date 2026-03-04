@@ -15,7 +15,8 @@
 
 ### Tareas
 
-- [ ] Implementar `ImageQualityValidator`:
+- [x] Implementar `ImageQualityValidator`:
+
   ```python
   class ImageQualityValidator:
       async def validate(self, image: bytes) -> QualityResult:
@@ -30,21 +31,22 @@
           )
   ```
 
-- [ ] Implementar `VirtualCameraDetector`:
+- [x] Implementar `VirtualCameraDetector`:
   - Analizar metadatos del stream de video.
   - Detectar drivers conocidos: OBS Virtual Camera, ManyCam, Snap Camera.
   - Verificar coherencia de framerate y resolucion.
 
-- [ ] Implementar `GalleryBlocker`:
+- [x] Implementar `GalleryBlocker`:
   - Verificar que la imagen se capturo en vivo (no subida desde archivo).
   - Analizar EXIF: timestamp, modelo de camara, software.
   - Rechazar imagenes con timestamps antiguos.
 
-- [ ] Implementar validacion de tamano maximo de payload (imagenes > 10MB rechazadas).
+- [x] Implementar validacion de tamano maximo de payload (imagenes > 10MB rechazadas).
 
-- [ ] Tests con imagenes de buena/mala calidad, imagenes de galeria, capturas de camara virtual.
+- [x] Tests con imagenes de buena/mala calidad, imagenes de galeria, capturas de camara virtual.
 
 ### Checkpoint 3.1
+
 > Resultado esperado: Imagenes borrosas, oscuras, sin rostro o de camara virtual son rechazadas con mensaje descriptivo.
 
 ---
@@ -56,36 +58,37 @@
 
 ### Tareas
 
-- [ ] Implementar `DocumentBlacklistChecker`:
+- [x] Implementar `DocumentBlacklistChecker`:
   - Consultar tabla `blacklisted_documents` (cacheada en Redis, TTL 5 min).
   - Match por numero de documento.
   - Resultado: blacklisted (hard reject) o clean.
 
-- [ ] Implementar `MultiAttemptDetector`:
+- [x] Implementar `MultiAttemptDetector`:
   - Detectar multiples intentos desde mismo device_fingerprint en ventana de tiempo.
   - Detectar multiples documentos diferentes desde misma IP.
   - Umbrales configurables: max 3 intentos / hora / dispositivo.
 
-- [ ] Implementar `GeoLocationChecker`:
+- [x] Implementar `GeoLocationChecker`:
   - GeoIP2 MaxMind para localizar IP del usuario.
   - Comparar pais de IP con nacionalidad del documento.
   - Flag auxiliar (no bloqueante) si hay discrepancia.
 
-- [ ] Implementar `VPNProxyDetector`:
+- [x] Implementar `VPNProxyDetector`:
   - Detectar IPs de VPN/proxy/Tor conocidos.
   - Flag de riesgo (no bloqueante, aumenta fraud_score).
 
-- [ ] Implementar `AgeConsistencyChecker`:
+- [x] Implementar `AgeConsistencyChecker`:
   - Estimar edad visual del rostro de la selfie (DEX o MiVOLO).
   - Comparar con fecha de nacimiento del documento.
   - Tolerancia: +/- 10 anos.
   - Flag si la discrepancia es > 15 anos.
 
-- [ ] Implementar `SessionAnomalyDetector`:
+- [x] Implementar `SessionAnomalyDetector`:
   - Isolation Forest para detectar patrones de sesion inusuales.
   - Features: tiempo entre pasos, numero de reintentos, dispositivo, geolocalizacion.
 
-- [ ] Crear `AntifraudService`:
+- [x] Crear `AntifraudService`:
+
   ```python
   class AntifraudService:
       async def analyze(self, session: Session, module_results: dict) -> AntifraudResult:
@@ -106,9 +109,10 @@
           )
   ```
 
-- [ ] Tests con escenarios de fraude simulados (cada caso de uso del punto 8 del CLAUDE.md).
+- [x] Tests con escenarios de fraude simulados (cada caso de uso del punto 8 del CLAUDE.md).
 
 ### Checkpoint 3.2
+
 > Resultado esperado: Los 10 escenarios de fraude del CLAUDE.md son detectados correctamente. Documentos en blacklist se rechazan inmediatamente.
 
 ---
@@ -120,7 +124,8 @@
 
 ### Tareas
 
-- [ ] Implementar `HardRuleEngine` — reglas de rechazo/aprobacion inmediata:
+- [x] Implementar `HardRuleEngine` — reglas de rechazo/aprobacion inmediata:
+
   ```python
   HARD_REJECT_RULES = [
       ("liveness_score < 0.3", "Liveness check failed critically"),
@@ -131,7 +136,8 @@
   ]
   ```
 
-- [ ] Implementar `WeightedScoreAggregator`:
+- [x] Implementar `WeightedScoreAggregator`:
+
   ```python
   DEFAULT_WEIGHTS = {
       "liveness_score": 0.25,
@@ -141,10 +147,12 @@
       "antifraud_score": 0.15,          # invertido: 1 - fraud
   }
   ```
+
   - Pesos almacenados en Redis, modificables sin redeploy.
   - Score global = suma ponderada normalizada.
 
-- [ ] Implementar `DecisionClassifier`:
+- [x] Implementar `DecisionClassifier`:
+
   ```
   Score >= 0.85          → VERIFIED
   Score 0.60 - 0.85      → MANUAL_REVIEW
@@ -152,16 +160,17 @@
   Hard rule triggered    → REJECTED (bypass score)
   ```
 
-- [ ] Implementar `DecisionExplainer` — razones legibles:
+- [x] Implementar `DecisionExplainer` — razones legibles:
   - Generar lista de razones en lenguaje humano.
   - Indicar que modulos contribuyeron positiva y negativamente.
 
-- [ ] Implementar `ManualReviewQueue`:
+- [x] Implementar `ManualReviewQueue`:
   - Encolar sesiones ambiguas para revision humana.
   - Almacenar en PostgreSQL con estado `pending_review`.
   - Endpoint para que reviewers consulten y resuelvan.
 
-- [ ] Crear `DecisionService`:
+- [x] Crear `DecisionService`:
+
   ```python
   class DecisionService:
       async def decide(self, session_id: UUID, module_scores: dict) -> DecisionResult:
@@ -190,9 +199,10 @@
           )
   ```
 
-- [ ] Tests con combinaciones de scores que produzcan cada tipo de decision.
+- [x] Tests con combinaciones de scores que produzcan cada tipo de decision.
 
 ### Checkpoint 3.3
+
 > Resultado esperado: Hard rules rechazan correctamente. Scores ponderados clasifican en 3 categorias. Pesos se pueden modificar via Redis sin redeploy. Cola de revision manual funciona.
 
 ---
@@ -204,34 +214,35 @@
 
 ### Tareas
 
-- [ ] Implementar `AuditLogger`:
+- [x] Implementar `AuditLogger`:
   - Registrar eventos con structlog en formato JSON.
   - Campos obligatorios: session_id, trace_id, event_type, timestamp_us, data.
   - Escribir en tabla `audit_logs` de PostgreSQL.
 
-- [ ] Implementar `PIIAnonymizer`:
+- [x] Implementar `PIIAnonymizer`:
   - Detectar y enmascarar PII con Microsoft Presidio.
   - Campos a anonimizar: nombre, numero de documento, fecha nacimiento.
   - Formato de anonimizacion: `"Juan Perez" → "J*** P***"`.
 
-- [ ] Implementar `SessionHasher`:
+- [x] Implementar `SessionHasher`:
   - HMAC-SHA256 por sesion para garantizar integridad.
   - Hash calculado sobre todos los eventos de la sesion.
   - Almacenar hash final en `audit_logs`.
 
-- [ ] Implementar `DataRetentionManager`:
+- [x] Implementar `DataRetentionManager`:
   - Job de Celery Beat que cada 5 minutos:
     - Elimina imagenes de MinIO con > 15 min de antiguedad.
     - Elimina embeddings faciales temporales de Redis.
   - Job diario que purga audit_logs segun politica de retencion.
 
-- [ ] Implementar metricas de auditoria:
+- [x] Implementar metricas de auditoria:
   - FAR (False Acceptance Rate) — tasa de impostores aceptados.
   - FRR (False Rejection Rate) — tasa de legitimos rechazados.
   - Tiempo medio de procesamiento por modulo.
   - Distribucion de decisiones (VERIFIED/REJECTED/MANUAL_REVIEW).
 
 ### Checkpoint 3.4
+
 > Resultado esperado: Cada sesion de verificacion genera un trail de auditoria completo, anonimizado, con hash de integridad. Datos biometricos se purgan tras 15 min.
 
 ---
@@ -243,7 +254,8 @@
 
 ### Tareas
 
-- [ ] Implementar `PipelineOrchestrator` — flujo completo:
+- [x] Implementar `PipelineOrchestrator` — flujo completo:
+
   ```python
   class PipelineOrchestrator:
       async def run(self, request: VerificationRequest) -> VerificationResponse:
@@ -303,15 +315,16 @@
               return self.error_response(session, e)
   ```
 
-- [ ] Implementar manejo de errores parciales:
+- [x] Implementar manejo de errores parciales:
   - Si liveness falla → MANUAL_REVIEW (critico pero no fatal).
   - Si OCR falla → continuar con penalizacion de score.
   - Si doc_processing falla → REJECTED.
   - Si face_match falla → MANUAL_REVIEW.
 
-- [ ] Implementar timeout global del pipeline (8 segundos).
+- [x] Implementar timeout global del pipeline (8 segundos).
 
-- [ ] Implementar progreso de sesion en Redis:
+- [x] Implementar progreso de sesion en Redis:
+
   ```json
   {
     "session_id": "uuid",
@@ -322,29 +335,30 @@
   }
   ```
 
-- [ ] Conectar con el endpoint `POST /api/v1/verify`:
+- [x] Conectar con el endpoint `POST /api/v1/verify`:
   - Recibir request.
   - Ejecutar pipeline via orquestador.
   - Retornar respuesta.
 
-- [ ] Implementar `GET /api/v1/verify/{id}` para consultar progreso/resultado.
+- [x] Implementar `GET /api/v1/verify/{id}` para consultar progreso/resultado.
 
-- [ ] Test end-to-end completo: enviar selfie + documento → recibir decision.
+- [x] Test end-to-end completo: enviar selfie + documento → recibir decision.
 
 ### Checkpoint 3.5
+
 > Resultado esperado: El pipeline completo funciona end-to-end. Una solicitud de verificacion pasa por todos los modulos y retorna VERIFIED, REJECTED o MANUAL_REVIEW en < 8 segundos.
 
 ---
 
 ## Criterios de Completitud de Fase 3
 
-- [ ] Pipeline end-to-end funcional (selfie + documento → decision)
-- [ ] Paralelismo de fases reduce el tiempo total vs secuencial
-- [ ] Manejo de errores parciales funciona (degradacion graceful)
-- [ ] 10 escenarios de fraude del CLAUDE.md son detectados
-- [ ] Motor de decision clasifica correctamente con pesos configurables
-- [ ] Auditoria completa: trail anonimizado con hash de integridad
-- [ ] Datos biometricos se purgan automaticamente tras 15 min
-- [ ] Timeout global de 8s se respeta
-- [ ] Tests e2e pasan con multiples escenarios (positivos, negativos, edge cases)
-- [ ] Metricas FAR/FRR se pueden calcular a partir de los audit logs
+- [x] Pipeline end-to-end funcional (selfie + documento → decision)
+- [x] Paralelismo de fases reduce el tiempo total vs secuencial
+- [x] Manejo de errores parciales funciona (degradacion graceful)
+- [x] 10 escenarios de fraude del CLAUDE.md son detectados
+- [x] Motor de decision clasifica correctamente con pesos configurables
+- [x] Auditoria completa: trail anonimizado con hash de integridad
+- [x] Datos biometricos se purgan automaticamente tras 15 min
+- [x] Timeout global de 8s se respeta
+- [x] Tests e2e pasan con multiples escenarios (positivos, negativos, edge cases)
+- [x] Metricas FAR/FRR se pueden calcular a partir de los audit logs
