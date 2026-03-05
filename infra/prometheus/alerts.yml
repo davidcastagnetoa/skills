@@ -1,0 +1,113 @@
+groups:
+  - name: verifid-api
+    rules:
+      - alert: HighErrorRate
+        expr: rate(http_requests_total{status=~"5.."}[5m]) / rate(http_requests_total[5m]) > 0.05
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "High error rate on VerifID API"
+          description: "More than 5% of requests returning 5xx over the last 5 minutes."
+
+      - alert: HighLatencyP95
+        expr: histogram_quantile(0.95, rate(http_request_duration_seconds_bucket[5m])) > 8
+        for: 3m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High P95 latency"
+          description: "95th percentile latency exceeds 8 seconds."
+
+      - alert: HighLatencyP99
+        expr: histogram_quantile(0.99, rate(http_request_duration_seconds_bucket[5m])) > 15
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Critical P99 latency"
+          description: "99th percentile latency exceeds 15 seconds."
+
+  - name: verifid-pipeline
+    rules:
+      - alert: LowVerificationSuccessRate
+        expr: rate(verification_total{status="VERIFIED"}[1h]) / rate(verification_total[1h]) < 0.5
+        for: 15m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Low verification success rate"
+          description: "Less than 50% of verifications succeeding in the last hour."
+
+      - alert: HighFraudScore
+        expr: histogram_quantile(0.95, rate(antifraud_score_bucket[30m])) > 0.7
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Elevated fraud scores detected"
+          description: "95th percentile fraud score above 0.7 — possible attack pattern."
+
+      - alert: PipelineTimeoutRate
+        expr: rate(verification_total{status="ERROR"}[15m]) > 0.1
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: "High pipeline error/timeout rate"
+          description: "Pipeline errors exceed threshold."
+
+  - name: verifid-ml
+    rules:
+      - alert: SlowMLInference
+        expr: histogram_quantile(0.95, rate(ml_inference_duration_seconds_bucket[5m])) > 2
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Slow ML model inference"
+          description: "P95 inference latency exceeds 2 seconds."
+
+      - alert: MLInferenceErrors
+        expr: rate(ml_inference_total{status="error"}[10m]) > 0.05
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: "High ML inference error rate"
+          description: "ML model inference errors exceeding 5%."
+
+  - name: verifid-infra
+    rules:
+      - alert: RedisDown
+        expr: up{job="redis"} == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Redis is down"
+
+      - alert: PostgresDown
+        expr: up{job="postgres"} == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "PostgreSQL is down"
+
+      - alert: HighMemoryUsage
+        expr: process_resident_memory_bytes{job="verifid-api"} > 2e9
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "API process using > 2GB memory"
+
+      - alert: CircuitBreakerOpen
+        expr: circuit_breaker_state > 1
+        for: 30s
+        labels:
+          severity: critical
+        annotations:
+          summary: "Circuit breaker is OPEN"
+          description: "A dependency circuit breaker has opened."

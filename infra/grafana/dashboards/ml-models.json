@@ -1,0 +1,57 @@
+{
+  "dashboard": {
+    "title": "VerifID - ML Models",
+    "uid": "verifid-ml-models",
+    "tags": ["verifid", "ml"],
+    "timezone": "browser",
+    "refresh": "10s",
+    "panels": [
+      {
+        "title": "Inference Latency by Model (p95)",
+        "type": "timeseries",
+        "gridPos": { "h": 8, "w": 12, "x": 0, "y": 0 },
+        "targets": [
+          {
+            "expr": "histogram_quantile(0.95, sum(rate(ml_inference_duration_seconds_bucket[5m])) by (model, le))",
+            "legendFormat": "{{model}}"
+          }
+        ],
+        "fieldConfig": { "defaults": { "unit": "s" } }
+      },
+      {
+        "title": "Inference Throughput (req/s)",
+        "type": "timeseries",
+        "gridPos": { "h": 8, "w": 12, "x": 12, "y": 0 },
+        "targets": [
+          {
+            "expr": "sum(rate(ml_inference_total{status=\"success\"}[5m])) by (model)",
+            "legendFormat": "{{model}}"
+          }
+        ]
+      },
+      {
+        "title": "Inference Error Rate",
+        "type": "timeseries",
+        "gridPos": { "h": 8, "w": 12, "x": 0, "y": 8 },
+        "targets": [
+          {
+            "expr": "sum(rate(ml_inference_total{status=\"error\"}[5m])) by (model) / sum(rate(ml_inference_total[5m])) by (model) * 100",
+            "legendFormat": "{{model}}"
+          }
+        ],
+        "fieldConfig": { "defaults": { "unit": "percent" } }
+      },
+      {
+        "title": "Inference Latency Heatmap",
+        "type": "heatmap",
+        "gridPos": { "h": 8, "w": 12, "x": 12, "y": 8 },
+        "targets": [
+          {
+            "expr": "sum(increase(ml_inference_duration_seconds_bucket[5m])) by (le)",
+            "legendFormat": "{{le}}"
+          }
+        ]
+      }
+    ]
+  }
+}

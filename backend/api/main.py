@@ -16,6 +16,9 @@ from core.exceptions import (
     ValidationError,
     VerifIDError,
 )
+from infrastructure.logging import configure_logging
+from infrastructure.middleware import PrometheusMiddleware
+from infrastructure.tracing import instrument_fastapi
 
 logger = structlog.get_logger()
 
@@ -23,18 +26,8 @@ logger = structlog.get_logger()
 @asynccontextmanager
 async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:
     """Application startup and shutdown events."""
-    # Startup
-    structlog.configure(
-        processors=[
-            structlog.processors.TimeStamper(fmt="iso"),
-            structlog.processors.add_log_level,
-            structlog.processors.StackInfoRenderer(),
-            structlog.dev.ConsoleRenderer() if settings.is_development else structlog.processors.JSONRenderer(),
-        ],
-        wrapper_class=structlog.make_filtering_bound_logger(
-            structlog.get_level_from_name(settings.app_log_level)
-        ),
-    )
+    # Startup — structured logging with trace correlation
+    configure_logging(env=settings.app_env, log_level=settings.app_log_level)
     logger.info("verifid.startup", env=settings.app_env)
     yield
     # Shutdown
@@ -51,6 +44,7 @@ app = FastAPI(
 
 # --- Middleware ---
 
+app.add_middleware(PrometheusMiddleware)
 app.add_middleware(GZipMiddleware, minimum_size=1000)
 app.add_middleware(
     CORSMiddleware,
@@ -59,6 +53,9 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# --- OpenTelemetry auto-instrumentation ---
+instrument_fastapi(app)
 
 
 @app.middleware("http")
@@ -96,6 +93,17 @@ async def validation_handler(request: Request, exc: ValidationError) -> ORJSONRe
 @app.exception_handler(VerifIDError)
 async def verifid_error_handler(request: Request, exc: VerifIDError) -> ORJSONResponse:
     return ORJSONResponse(status_code=500, content={"detail": exc.message})
+
+
+# --- Metrics endpoint ---
+
+
+@app.get("/metrics", include_in_schema=False)
+async def metrics():
+    """Expose Prometheus metrics."""
+    from prometheus_client import CONTENT_TYPE_LATEST, generate_latest
+
+    return Response(content=generate_latest(), media_type=CONTENT_TYPE_LATEST)
 
 
 # --- Routers ---

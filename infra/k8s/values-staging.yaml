@@ -1,0 +1,45 @@
+# Staging overrides
+
+replicaCount:
+  api: 1
+  celeryWorker: 1
+  celeryBeat: 1
+  nginx: 1
+
+app:
+  env: staging
+  debug: false
+  logLevel: INFO
+
+autoscaling:
+  api:
+    enabled: false
+  celeryWorker:
+    enabled: false
+
+ingress:
+  hosts:
+    - host: verify-staging.example.com
+      paths:
+        - path: /
+          pathType: Prefix
+  tls:
+    - secretName: verifid-staging-tls
+      hosts:
+        - verify-staging.example.com
+
+resources:
+  api:
+    requests:
+      cpu: 100m
+      memory: 256Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi
+  celeryWorker:
+    requests:
+      cpu: 250m
+      memory: 512Mi
+    limits:
+      cpu: "1"
+      memory: 1Gi

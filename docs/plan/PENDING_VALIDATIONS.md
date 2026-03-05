@@ -41,3 +41,27 @@ Estas validaciones requieren Docker corriendo y deben ejecutarse antes de consid
 - [ ] Verificar pesos del decision engine configurables via Redis sin redeploy
 - [ ] Verificar cola de revisión manual para sesiones ambiguas
 - [ ] Medir rendimiento end-to-end: pipeline completo < 8 segundos
+
+## Fase 4 — Production Infrastructure
+
+- [ ] Verificar que Nginx proxea correctamente a FastAPI con TLS
+- [ ] Verificar JWT validation y API key auth en Nginx Lua
+- [ ] Verificar rate limiting (60 req/min general, 10 req/min /verify)
+- [ ] Verificar circuit breaker Lua ante fallos del upstream
+- [ ] Verificar dashboards Grafana cargan datos reales de Prometheus
+- [ ] Verificar trazas en Jaeger con trace_id correlacionado en logs
+- [ ] Verificar health checks `/health` y `/ready` con dependencias caidas
+- [ ] Verificar circuit breakers Python (PostgreSQL, Redis, MinIO, model_server)
+- [ ] Verificar Alertmanager recibe alertas de Prometheus
+- [ ] Verificar Vault integration (secretos inyectados al arrancar)
+- [ ] Verificar cifrado/descifrado AES-256-GCM en MinIO
+- [ ] Verificar RBAC (admin/operator/reviewer/client permissions)
+- [ ] Verificar PostgreSQL HA: `docker compose -f docker-compose.yml -f docker-compose.ha.yml up`
+- [ ] Verificar PgBouncer connection pooling (max 200 clients, pool size 20)
+- [ ] Verificar pgBackRest full + diff backup a MinIO
+- [ ] Verificar Triton Inference Server con modelos ONNX cargados
+- [ ] Verificar fallback de Triton a ONNX Runtime local
+- [ ] Verificar CI pipeline: `gh workflow run ci.yml`
+- [ ] Verificar pre-commit hooks: `pre-commit run --all-files`
+- [ ] Verificar Helm chart: `helm template verifid infra/k8s/ -f infra/k8s/values.yaml`
+- [ ] Verificar HPA escala pods bajo carga con k6/locust

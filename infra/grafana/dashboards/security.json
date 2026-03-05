@@ -1,0 +1,88 @@
+{
+  "dashboard": {
+    "title": "VerifID - Security",
+    "uid": "verifid-security",
+    "tags": ["verifid", "security"],
+    "timezone": "browser",
+    "refresh": "30s",
+    "panels": [
+      {
+        "title": "Rate Limit Hits",
+        "type": "timeseries",
+        "gridPos": { "h": 8, "w": 12, "x": 0, "y": 0 },
+        "targets": [
+          {
+            "expr": "sum(rate(rate_limit_hits_total[5m])) by (endpoint)",
+            "legendFormat": "{{endpoint}}"
+          }
+        ]
+      },
+      {
+        "title": "Circuit Breaker State",
+        "type": "stat",
+        "gridPos": { "h": 8, "w": 12, "x": 12, "y": 0 },
+        "targets": [
+          {
+            "expr": "circuit_breaker_state",
+            "legendFormat": "{{dependency}}"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "mappings": [
+              { "type": "value", "options": {
+                "0": { "text": "CLOSED", "color": "green" },
+                "1": { "text": "HALF_OPEN", "color": "yellow" },
+                "2": { "text": "OPEN", "color": "red" }
+              }}
+            ]
+          }
+        }
+      },
+      {
+        "title": "HTTP 401/403 Responses",
+        "type": "timeseries",
+        "gridPos": { "h": 8, "w": 12, "x": 0, "y": 8 },
+        "targets": [
+          {
+            "expr": "sum(rate(http_requests_total{status=~\"40[13]\"}[5m])) by (status)",
+            "legendFormat": "HTTP {{status}}"
+          }
+        ]
+      },
+      {
+        "title": "HTTP 429 (Rate Limited)",
+        "type": "timeseries",
+        "gridPos": { "h": 8, "w": 12, "x": 12, "y": 8 },
+        "targets": [
+          {
+            "expr": "sum(rate(http_requests_total{status=\"429\"}[5m]))",
+            "legendFormat": "429 Rate Limited"
+          }
+        ]
+      },
+      {
+        "title": "FAR / FRR Counters",
+        "type": "stat",
+        "gridPos": { "h": 4, "w": 12, "x": 0, "y": 16 },
+        "targets": [
+          { "expr": "far_false_acceptance_total", "legendFormat": "False Acceptances" },
+          { "expr": "frr_false_rejection_total", "legendFormat": "False Rejections" }
+        ]
+      },
+      {
+        "title": "Fraud Flags Triggered",
+        "type": "table",
+        "gridPos": { "h": 8, "w": 12, "x": 12, "y": 16 },
+        "targets": [
+          {
+            "expr": "sum(antifraud_flags_total) by (flag_code)",
+            "legendFormat": "{{flag_code}}",
+            "format": "table",
+            "instant": true
+          }
+        ]
+      }
+    ]
+  }
+}

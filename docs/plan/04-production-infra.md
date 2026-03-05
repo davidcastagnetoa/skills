@@ -69,7 +69,7 @@
 
 #### 4.2.1 Metricas (Prometheus + Grafana)
 
-- [ ] Instrumentar FastAPI con prometheus_client:
+- [x] Instrumentar FastAPI con prometheus_client:
   ```python
   REQUEST_LATENCY = Histogram('http_request_duration_seconds', 'Request latency', ['method', 'endpoint', 'status'])
   VERIFICATION_SCORE = Histogram('verification_score', 'Score distribution', ['module'])
@@ -77,24 +77,24 @@
   ACTIVE_SESSIONS = Gauge('active_sessions', 'Currently processing sessions')
   ```
 
-- [ ] Instrumentar cada modulo ML con metricas:
+- [x] Instrumentar cada modulo ML con metricas:
   - Latencia de inferencia por modelo.
   - Throughput (inferences/second).
   - Score distributions (histogramas).
   - Error rates.
 
-- [ ] Configurar Prometheus server en docker-compose:
+- [x] Configurar Prometheus server en docker-compose:
   - Scrape targets: FastAPI, Celery workers, Redis exporter, PostgreSQL exporter, Node exporter.
   - Retention: 15 dias local.
 
-- [ ] Crear dashboards Grafana:
-  - [ ] **Dashboard: API Overview** — RPS, latencia p50/p95/p99, error rate, active sessions.
-  - [ ] **Dashboard: KYC Pipeline** — scores por modulo, distribucion de decisiones, tiempo por fase.
-  - [ ] **Dashboard: ML Models** — latencia de inferencia, GPU utilization, throughput.
-  - [ ] **Dashboard: Infrastructure** — CPU, memoria, disco, red por servicio.
-  - [ ] **Dashboard: Security** — rate limit hits, blocked IPs, JWT errors.
+- [x] Crear dashboards Grafana:
+  - [x] **Dashboard: API Overview** — RPS, latencia p50/p95/p99, error rate, active sessions.
+  - [x] **Dashboard: KYC Pipeline** — scores por modulo, distribucion de decisiones, tiempo por fase.
+  - [x] **Dashboard: ML Models** — latencia de inferencia, GPU utilization, throughput.
+  - [x] **Dashboard: Infrastructure** — CPU, memoria, disco, red por servicio.
+  - [x] **Dashboard: Security** — rate limit hits, blocked IPs, JWT errors.
 
-- [ ] Configurar alerting rules en Prometheus:
+- [x] Configurar alerting rules en Prometheus:
   ```yaml
   groups:
     - name: verifid-alerts
@@ -109,31 +109,31 @@
 
 #### 4.2.2 Trazabilidad Distribuida (OpenTelemetry + Jaeger)
 
-- [ ] Integrar OpenTelemetry SDK en FastAPI:
+- [x] Integrar OpenTelemetry SDK en FastAPI:
   - Auto-instrumentacion de HTTP requests.
   - Propagacion de trace context (W3C Trace Context).
   - Exportar spans a Jaeger.
 
-- [ ] Instrumentar el pipeline del orquestador:
+- [x] Instrumentar el pipeline del orquestador:
   - Span por cada fase del pipeline.
   - Span por cada modulo ML.
   - Atributos: session_id, module_name, score.
 
-- [ ] Instrumentar Celery tasks con spans.
+- [x] Instrumentar Celery tasks con spans.
 
-- [ ] Configurar Jaeger en docker-compose.
+- [x] Configurar Jaeger en docker-compose.
 
-- [ ] Configurar sampling: 100% en dev, 10% en produccion.
+- [x] Configurar sampling: 100% en dev, 10% en produccion.
 
 #### 4.2.3 Logs Centralizados
 
-- [ ] Configurar structlog para JSON logging correlacionado:
+- [x] Configurar structlog para JSON logging correlacionado:
   - Cada log incluye: session_id, trace_id, span_id, timestamp.
   - Niveles: DEBUG (dev only), INFO, WARNING, ERROR.
 
-- [ ] Configurar Promtail/Vector para recoleccion de logs.
+- [x] Configurar Promtail/Vector para recoleccion de logs.
 
-- [ ] Configurar log retention: ERROR 90 dias, INFO 30 dias, DEBUG 7 dias.
+- [x] Configurar log retention: ERROR 90 dias, INFO 30 dias, DEBUG 7 dias.
 
 ### Checkpoint 4.2
 > Resultado esperado: Dashboards Grafana muestran metricas en tiempo real. Jaeger muestra flame graphs de sesiones. Logs correlacionados por session_id y trace_id.
@@ -147,7 +147,7 @@
 
 ### Tareas
 
-- [ ] Implementar health checks profundos en `/ready`:
+- [x] Implementar health checks profundos en `/ready`:
   ```python
   async def readiness_check():
       checks = {
@@ -161,18 +161,18 @@
       return {"status": "ready" if all_healthy else "not_ready", "checks": checks}
   ```
 
-- [ ] Implementar circuit breakers para dependencias externas:
+- [x] Implementar circuit breakers para dependencias externas:
   - PostgreSQL: open after 5 failures in 30s, half-open after 15s.
   - Redis: open after 3 failures in 15s, half-open after 10s.
   - MinIO: open after 3 failures in 15s, half-open after 10s.
   - Model server: open after 3 failures in 30s, half-open after 20s.
 
-- [ ] Configurar Alertmanager:
+- [x] Configurar Alertmanager:
   - Routing: critico → PagerDuty/Slack inmediato, warning → email digest.
   - Agrupacion por servicio para evitar alert storms.
   - Silencing para mantenimiento planificado.
 
-- [ ] Implementar auto-recovery:
+- [x] Implementar auto-recovery:
   - Watchdog que reinicia workers de Celery si no responden.
   - Reconexion automatica a PostgreSQL y Redis tras fallos transitorios.
 
@@ -188,26 +188,26 @@
 
 ### Tareas
 
-- [ ] Configurar HashiCorp Vault (dev mode para local):
+- [x] Configurar HashiCorp Vault (dev mode para local):
   - Almacenar: DB passwords, Redis password, MinIO keys, JWT private key, encryption keys.
   - Crear politicas de acceso por servicio (minimo privilegio).
   - Integracion con FastAPI settings para inyectar secretos al arrancar.
 
-- [ ] Implementar cifrado de imagenes en MinIO:
+- [x] Implementar cifrado de imagenes en MinIO:
   - Cifrar con AES-256-GCM antes de upload.
   - Descifrar al download.
   - Clave de cifrado en Vault.
 
-- [ ] Configurar `.env.example` sin secretos reales (solo placeholders).
+- [x] Configurar `.env.example` sin secretos reales (solo placeholders).
 
-- [ ] Ejecutar security scanning:
+- [x] Ejecutar security scanning:
   - `bandit` para analisis estatico del codigo Python.
   - `pip-audit` para vulnerabilidades en dependencias.
   - `trivy` para escanear imagenes Docker.
 
-- [ ] Generar SBOM (Software Bill of Materials) con Syft.
+- [x] Generar SBOM (Software Bill of Materials) con Syft.
 
-- [ ] Implementar RBAC basico para el API:
+- [x] Implementar RBAC basico para el API:
   - Roles: `admin`, `operator`, `reviewer`, `client`.
   - Admin: full access.
   - Operator: verificaciones + dashboards.
@@ -226,24 +226,24 @@
 
 ### Tareas
 
-- [ ] Configurar Patroni para HA de PostgreSQL:
+- [x] Configurar Patroni para HA de PostgreSQL:
   - Cluster de 2+ nodos (primary + replica).
   - etcd como consensus store.
   - Failover automatico < 30s.
   - Replicacion sincrona para no perder datos de verificacion.
 
-- [ ] Configurar PgBouncer como connection pooler:
+- [x] Configurar PgBouncer como connection pooler:
   - Modo transaction pooling.
   - Max connections por backend configurable.
   - Health check de conexiones.
 
-- [ ] Configurar pgBackRest para backups:
+- [x] Configurar pgBackRest para backups:
   - Full backup semanal.
   - Diferencial diario.
   - WAL archiving continuo a MinIO.
   - Cifrado de backups (AES-256-CBC).
 
-- [ ] Crear docker-compose.ha.yml con la topologia completa.
+- [x] Crear docker-compose.ha.yml con la topologia completa.
 
 ### Checkpoint 4.5
 > Resultado esperado: Failover de PostgreSQL funciona sin perdida de datos. Backups se ejecutan y se pueden restaurar. PgBouncer reduce conexiones al backend.
@@ -257,12 +257,12 @@
 
 ### Tareas
 
-- [ ] Configurar NVIDIA Triton Inference Server (o TorchServe si no hay GPU NVIDIA):
+- [x] Configurar NVIDIA Triton Inference Server (o TorchServe si no hay GPU NVIDIA):
   - Model repository con todos los modelos ONNX.
   - Batching dinamico habilitado.
   - Health check endpoint.
 
-- [ ] Crear configuracion por modelo:
+- [x] Crear configuracion por modelo:
   ```
   model_repository/
   ├── arcface/
@@ -277,11 +277,11 @@
   └── ...
   ```
 
-- [ ] Migrar inferencia de los modulos (Fase 2) para usar Triton client en vez de ONNX Runtime local:
+- [x] Migrar inferencia de los modulos (Fase 2) para usar Triton client en vez de ONNX Runtime local:
   - gRPC client para maxima performance.
   - Fallback a ONNX Runtime local si Triton no esta disponible.
 
-- [ ] Agregar Triton al docker-compose.
+- [x] Agregar Triton al docker-compose.
 
 ### Checkpoint 4.6
 > Resultado esperado: Triton sirve todos los modelos con batching dinamico. Latencia de inferencia < 100ms por modelo. Fallback a ONNX Runtime funciona.
@@ -295,7 +295,7 @@
 
 ### Tareas
 
-- [ ] Crear `.github/workflows/ci.yml`:
+- [x] Crear `.github/workflows/ci.yml`:
   ```yaml
   jobs:
     lint:        # ruff, black --check, mypy
@@ -305,13 +305,13 @@
     schema:      # validar que schemas no tienen breaking changes
   ```
 
-- [ ] Configurar pre-commit hooks:
+- [x] Configurar pre-commit hooks:
   - black (formatter)
   - ruff (linter)
   - mypy (type checker)
   - conventional-commits (commit message format)
 
-- [ ] Configurar semantic release para versionado automatico basado en conventional commits.
+- [x] Configurar semantic release para versionado automatico basado en conventional commits.
 
 ### Checkpoint 4.7
 > Resultado esperado: PRs pasan por lint + test + security scan automaticamente. Pre-commit hooks previenen codigo malformado.
@@ -325,7 +325,7 @@
 
 ### Tareas
 
-- [ ] Crear Helm chart basico en `infra/k8s/`:
+- [x] Crear Helm chart basico en `infra/k8s/`:
   ```
   infra/k8s/
   ├── Chart.yaml
@@ -344,11 +344,11 @@
       └── ingress.yaml
   ```
 
-- [ ] Configurar HPA (Horizontal Pod Autoscaler) para API y Celery workers.
+- [x] Configurar HPA (Horizontal Pod Autoscaler) para API y Celery workers.
 
-- [ ] Configurar liveness/readiness probes en todos los deployments.
+- [x] Configurar liveness/readiness probes en todos los deployments.
 
-- [ ] Documentar el proceso de despliegue en `docs/deployment.md`.
+- [x] Documentar el proceso de despliegue en `docs/deployment.md`.
 
 ### Checkpoint 4.8
 > Resultado esperado: `helm install` despliega el stack completo en un cluster K8s. HPA escala workers automaticamente.
@@ -357,13 +357,13 @@
 
 ## Criterios de Completitud de Fase 4
 
-- [ ] API Gateway con TLS, JWT, rate limiting y circuit breaker
-- [ ] Dashboards Grafana operativos con metricas de negocio y infra
-- [ ] Trazabilidad distribuida funcional (Jaeger)
-- [ ] Health checks y alertas configurados
-- [ ] Secretos en Vault, imagenes cifradas en MinIO
-- [ ] Escaneo de seguridad sin vulnerabilidades criticas
-- [ ] PostgreSQL HA con Patroni + backups con pgBackRest
-- [ ] Model server (Triton/TorchServe) sirviendo todos los modelos
-- [ ] CI/CD pipeline con lint + test + security + build
-- [ ] Helm chart para despliegue en K8s
+- [x] API Gateway con TLS, JWT, rate limiting y circuit breaker
+- [x] Dashboards Grafana operativos con metricas de negocio y infra
+- [x] Trazabilidad distribuida funcional (Jaeger)
+- [x] Health checks y alertas configurados
+- [x] Secretos en Vault, imagenes cifradas en MinIO
+- [x] Escaneo de seguridad sin vulnerabilidades criticas
+- [x] PostgreSQL HA con Patroni + backups con pgBackRest
+- [x] Model server (Triton/TorchServe) sirviendo todos los modelos
+- [x] CI/CD pipeline con lint + test + security + build
+- [x] Helm chart para despliegue en K8s

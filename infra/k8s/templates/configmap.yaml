@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-config
+  labels:
+    app.kubernetes.io/name: {{ .Chart.Name }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+data:
+  APP_ENV: {{ .Values.app.env | quote }}
+  APP_DEBUG: {{ .Values.app.debug | quote }}
+  APP_LOG_LEVEL: {{ .Values.app.logLevel | quote }}
+  PIPELINE_TIMEOUT_SECONDS: {{ .Values.app.pipelineTimeout | quote }}
+  DB_POOL_SIZE: {{ .Values.postgresql.poolSize | quote }}
+  DB_POOL_MAX_OVERFLOW: {{ .Values.postgresql.maxOverflow | quote }}
+  MINIO_ENDPOINT: {{ .Values.minio.endpoint | quote }}
+  MINIO_SECURE: {{ .Values.minio.secure | quote }}
+  MODELS_DIR: {{ .Values.models.dir | quote }}
+  FACE_MATCH_THRESHOLD: {{ .Values.models.faceMatchThreshold | quote }}
+  LIVENESS_THRESHOLD: {{ .Values.models.livenessThreshold | quote }}
+  JWT_ALGORITHM: {{ .Values.auth.jwtAlgorithm | quote }}
+  JWT_ACCESS_TOKEN_EXPIRE_MINUTES: {{ .Values.auth.accessTokenExpireMinutes | quote }}
+  AUTH_BYPASS: {{ .Values.auth.bypass | quote }}
+  RATE_LIMIT_REQUESTS: {{ .Values.rateLimit.requests | quote }}
+  RATE_LIMIT_WINDOW_SECONDS: {{ .Values.rateLimit.windowSeconds | quote }}
+  OTEL_SERVICE_NAME: "verifid-api"

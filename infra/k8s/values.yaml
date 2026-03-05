@@ -1,0 +1,128 @@
+# Default values for verifid Helm chart
+
+replicaCount:
+  api: 2
+  celeryWorker: 2
+  celeryBeat: 1
+  nginx: 2
+
+image:
+  api:
+    repository: verifid-api
+    tag: latest
+    pullPolicy: IfNotPresent
+  nginx:
+    repository: verifid-nginx
+    tag: latest
+    pullPolicy: IfNotPresent
+  triton:
+    repository: nvcr.io/nvidia/tritonserver
+    tag: "24.01-py3"
+    pullPolicy: IfNotPresent
+
+# --- Application ---
+app:
+  env: production
+  debug: false
+  logLevel: INFO
+  pipelineTimeout: 8
+
+# --- PostgreSQL ---
+postgresql:
+  host: postgres
+  port: 5432
+  database: verifid
+  username: verifid
+  existingSecret: verifid-db-secret
+  poolSize: 20
+  maxOverflow: 10
+
+# --- Redis ---
+redis:
+  host: redis
+  port: 6379
+  existingSecret: verifid-redis-secret
+
+# --- MinIO ---
+minio:
+  endpoint: minio:9000
+  secure: false
+  existingSecret: verifid-minio-secret
+
+# --- Security ---
+auth:
+  bypass: false
+  jwtAlgorithm: RS256
+  accessTokenExpireMinutes: 30
+
+# --- Rate Limiting ---
+rateLimit:
+  requests: 60
+  windowSeconds: 60
+  verifyRequests: 10
+  verifyWindowSeconds: 60
+
+# --- ML Models ---
+models:
+  dir: /app/models
+  faceMatchThreshold: 0.85
+  livenessThreshold: 0.7
+
+# --- Triton ---
+triton:
+  enabled: true
+  grpcPort: 8001
+
+# --- Ingress ---
+ingress:
+  enabled: true
+  className: nginx
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+  hosts:
+    - host: verify.example.com
+      paths:
+        - path: /
+          pathType: Prefix
+  tls:
+    - secretName: verifid-tls
+      hosts:
+        - verify.example.com
+
+# --- HPA ---
+autoscaling:
+  api:
+    enabled: true
+    minReplicas: 2
+    maxReplicas: 10
+    targetCPUUtilization: 70
+    targetMemoryUtilization: 80
+  celeryWorker:
+    enabled: true
+    minReplicas: 2
+    maxReplicas: 8
+    targetCPUUtilization: 80
+
+# --- Resources ---
+resources:
+  api:
+    requests:
+      cpu: 250m
+      memory: 512Mi
+    limits:
+      cpu: "1"
+      memory: 1Gi
+  celeryWorker:
+    requests:
+      cpu: 500m
+      memory: 1Gi
+    limits:
+      cpu: "2"
+      memory: 2Gi
+  nginx:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 500m
+      memory: 256Mi

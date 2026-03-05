@@ -1,0 +1,90 @@
+{
+  "dashboard": {
+    "title": "VerifID - Infrastructure",
+    "uid": "verifid-infrastructure",
+    "tags": ["verifid", "infra"],
+    "timezone": "browser",
+    "refresh": "30s",
+    "panels": [
+      {
+        "title": "CPU Usage (%)",
+        "type": "timeseries",
+        "gridPos": { "h": 8, "w": 12, "x": 0, "y": 0 },
+        "targets": [
+          {
+            "expr": "100 - (avg by (instance) (rate(node_cpu_seconds_total{mode=\"idle\"}[5m])) * 100)",
+            "legendFormat": "{{instance}}"
+          }
+        ],
+        "fieldConfig": { "defaults": { "unit": "percent", "max": 100 } }
+      },
+      {
+        "title": "Memory Usage",
+        "type": "timeseries",
+        "gridPos": { "h": 8, "w": 12, "x": 12, "y": 0 },
+        "targets": [
+          {
+            "expr": "node_memory_MemTotal_bytes - node_memory_MemAvailable_bytes",
+            "legendFormat": "Used"
+          },
+          {
+            "expr": "node_memory_MemTotal_bytes",
+            "legendFormat": "Total"
+          }
+        ],
+        "fieldConfig": { "defaults": { "unit": "bytes" } }
+      },
+      {
+        "title": "Disk Usage (%)",
+        "type": "gauge",
+        "gridPos": { "h": 8, "w": 8, "x": 0, "y": 8 },
+        "targets": [
+          {
+            "expr": "100 - (node_filesystem_avail_bytes{mountpoint=\"/\"} / node_filesystem_size_bytes{mountpoint=\"/\"} * 100)"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "percent", "max": 100,
+            "thresholds": { "steps": [
+              { "value": 0, "color": "green" },
+              { "value": 70, "color": "yellow" },
+              { "value": 90, "color": "red" }
+            ]}
+          }
+        }
+      },
+      {
+        "title": "Network I/O",
+        "type": "timeseries",
+        "gridPos": { "h": 8, "w": 16, "x": 8, "y": 8 },
+        "targets": [
+          {
+            "expr": "rate(node_network_receive_bytes_total[5m])",
+            "legendFormat": "RX {{device}}"
+          },
+          {
+            "expr": "rate(node_network_transmit_bytes_total[5m])",
+            "legendFormat": "TX {{device}}"
+          }
+        ],
+        "fieldConfig": { "defaults": { "unit": "Bps" } }
+      },
+      {
+        "title": "Service Up/Down",
+        "type": "stat",
+        "gridPos": { "h": 4, "w": 24, "x": 0, "y": 16 },
+        "targets": [
+          { "expr": "up", "legendFormat": "{{job}}" }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "mappings": [
+              { "type": "value", "options": { "0": { "text": "DOWN", "color": "red" }, "1": { "text": "UP", "color": "green" } } }
+            ]
+          }
+        }
+      }
+    ]
+  }
+}

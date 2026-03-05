@@ -1,0 +1,103 @@
+{
+  "dashboard": {
+    "title": "VerifID - KYC Pipeline",
+    "uid": "verifid-kyc-pipeline",
+    "tags": ["verifid", "pipeline"],
+    "timezone": "browser",
+    "refresh": "10s",
+    "panels": [
+      {
+        "title": "Verifications by Status",
+        "type": "piechart",
+        "gridPos": { "h": 8, "w": 8, "x": 0, "y": 0 },
+        "targets": [
+          {
+            "expr": "sum(verification_total) by (status)",
+            "legendFormat": "{{status}}"
+          }
+        ]
+      },
+      {
+        "title": "Verification Rate",
+        "type": "timeseries",
+        "gridPos": { "h": 8, "w": 16, "x": 8, "y": 0 },
+        "targets": [
+          {
+            "expr": "sum(rate(verification_total[5m])) by (status)",
+            "legendFormat": "{{status}}"
+          }
+        ]
+      },
+      {
+        "title": "Pipeline Duration (seconds)",
+        "type": "timeseries",
+        "gridPos": { "h": 8, "w": 12, "x": 0, "y": 8 },
+        "targets": [
+          {
+            "expr": "histogram_quantile(0.50, rate(verification_duration_seconds_bucket[5m]))",
+            "legendFormat": "p50"
+          },
+          {
+            "expr": "histogram_quantile(0.95, rate(verification_duration_seconds_bucket[5m]))",
+            "legendFormat": "p95"
+          }
+        ]
+      },
+      {
+        "title": "Scores by Module",
+        "type": "timeseries",
+        "gridPos": { "h": 8, "w": 12, "x": 12, "y": 8 },
+        "targets": [
+          {
+            "expr": "histogram_quantile(0.50, sum(rate(verification_score_bucket[10m])) by (module, le))",
+            "legendFormat": "{{module}} p50"
+          }
+        ]
+      },
+      {
+        "title": "Phase Duration",
+        "type": "timeseries",
+        "gridPos": { "h": 8, "w": 12, "x": 0, "y": 16 },
+        "targets": [
+          {
+            "expr": "histogram_quantile(0.95, sum(rate(pipeline_phase_duration_seconds_bucket[5m])) by (phase, le))",
+            "legendFormat": "{{phase}} p95"
+          }
+        ]
+      },
+      {
+        "title": "Phase Errors",
+        "type": "timeseries",
+        "gridPos": { "h": 8, "w": 12, "x": 12, "y": 16 },
+        "targets": [
+          {
+            "expr": "sum(rate(pipeline_phase_errors_total[5m])) by (phase)",
+            "legendFormat": "{{phase}}"
+          }
+        ]
+      },
+      {
+        "title": "Fraud Score Distribution",
+        "type": "histogram",
+        "gridPos": { "h": 8, "w": 12, "x": 0, "y": 24 },
+        "targets": [
+          {
+            "expr": "sum(rate(antifraud_score_bucket[10m])) by (le)",
+            "legendFormat": "{{le}}"
+          }
+        ]
+      },
+      {
+        "title": "Fraud Flags",
+        "type": "timeseries",
+        "gridPos": { "h": 8, "w": 12, "x": 12, "y": 24 },
+        "targets": [
+          {
+            "expr": "sum(rate(antifraud_flags_total[10m])) by (flag_code)",
+            "legendFormat": "{{flag_code}}"
+          }
+        ]
+      }
+    ]
+  }
+}
