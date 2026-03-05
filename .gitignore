@@ -75,3 +75,6 @@ redis-data/
 
 # K8s secrets
 infra/k8s/overlays/*/secrets.yaml
+
+# GitHub Actions
+.github/workflows/ci.yml
