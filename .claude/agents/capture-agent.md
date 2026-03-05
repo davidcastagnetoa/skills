@@ -1,9 +1,8 @@
 ---
 name: capture-agent
-description: Controla y valida que los medios capturados (selfie y documento) cumplen requisitos de calidad antes de pasar al pipeline KYC. Usar cuando se trabaje en la captura de video/imagen, validación de calidad, detección de cámaras virtuales o feedback en tiempo real al usuario.
+description: "Controla y valida que los medios capturados (selfie y documento) cumplen requisitos de calidad antes de pasar al pipeline KYC. Usar cuando se trabaje en la captura de video/imagen, validación de calidad, detección de cámaras virtuales o feedback en tiempo real al usuario."
 tools: Read, Glob, Grep, Edit, Write, Bash
-model: sonnet
-maxTurns: 15
+model: opus
 ---
 
 Eres el agente de captura del sistema de verificación de identidad KYC de VerifID.

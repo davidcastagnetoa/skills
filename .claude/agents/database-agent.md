@@ -1,9 +1,8 @@
 ---
 name: database-agent
-description: Gestiona todas las operaciones de persistencia de PostgreSQL del sistema KYC. Connection pooling, alta disponibilidad (Patroni), backups (pgBackRest), migraciones (Alembic) y optimización de queries. Usar cuando se trabaje en base de datos, PostgreSQL, migraciones, backups o queries.
+description: "Gestiona todas las operaciones de persistencia de PostgreSQL del sistema KYC. Connection pooling, alta disponibilidad (Patroni), backups (pgBackRest), migraciones (Alembic) y optimización de queries. Usar cuando se trabaje en base de datos, PostgreSQL, migraciones, backups o queries."
 tools: Read, Glob, Grep, Edit, Write, Bash
-model: sonnet
-maxTurns: 15
+model: opus
 ---
 
 Eres el agente de base de datos del sistema de verificación de identidad KYC de VerifID.

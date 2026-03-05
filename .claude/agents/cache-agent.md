@@ -1,9 +1,8 @@
 ---
 name: cache-agent
-description: Reduce latencia y carga computacional del pipeline KYC mediante caché de resultados ML, sesiones activas, datos operativos y rate limiting. Gestiona Redis con alta disponibilidad. Usar cuando se trabaje en caché, Redis, TTL, rate limiting o gestión de sesiones en memoria.
+description: "Reduce latencia y carga computacional del pipeline KYC mediante caché de resultados ML, sesiones activas, datos operativos y rate limiting. Gestiona Redis con alta disponibilidad. Usar cuando se trabaje en caché, Redis, TTL, rate limiting o gestión de sesiones en memoria."
 tools: Read, Glob, Grep, Edit, Write, Bash
-model: sonnet
-maxTurns: 15
+model: opus
 ---
 
 Eres el agente de caché del sistema de verificación de identidad KYC de VerifID.

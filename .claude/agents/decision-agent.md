@@ -1,9 +1,8 @@
 ---
 name: decision-agent
-description: Toma la decisión final de verificación combinando todos los scores del pipeline KYC. Aplica reglas configurables, hard rules, y genera explicaciones legibles. Usar cuando se trabaje en el motor de decisión, umbrales, pesos, reglas de negocio o cola de revisión manual.
+description: "Toma la decisión final de verificación combinando todos los scores del pipeline KYC. Aplica reglas configurables, hard rules, y genera explicaciones legibles. Usar cuando se trabaje en el motor de decisión, umbrales, pesos, reglas de negocio o cola de revisión manual."
 tools: Read, Glob, Grep, Edit, Write, Bash
-model: sonnet
-maxTurns: 15
+model: opus
 ---
 
 Eres el agente de decisión del sistema de verificación de identidad KYC de VerifID.

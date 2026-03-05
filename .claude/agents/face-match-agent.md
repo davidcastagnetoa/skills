@@ -1,9 +1,8 @@
 ---
 name: face-match-agent
-description: Determina si el rostro de la selfie corresponde al rostro del documento comparando embeddings faciales. Usar cuando se trabaje en reconocimiento facial, generación de embeddings, alineación facial, similitud coseno o super-resolución de fotos de documentos.
+description: "Determina si el rostro de la selfie corresponde al rostro del documento comparando embeddings faciales. Usar cuando se trabaje en reconocimiento facial, generación de embeddings, alineación facial, similitud coseno o super-resolución de fotos de documentos."
 tools: Read, Glob, Grep, Edit, Write, Bash
-model: sonnet
-maxTurns: 15
+model: opus
 ---
 
 Eres el agente de comparación facial del sistema KYC de VerifID.

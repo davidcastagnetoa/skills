@@ -1,9 +1,8 @@
 ---
 name: worker-pool-agent
-description: Gestiona el pool de workers que ejecutan tareas ML y procesamiento de imagen. Administra colas por prioridad, auto-scaling, batching dinámico y resiliencia con DLQ. Usar cuando se trabaje en Celery, colas de tareas, workers GPU/CPU, batching o gestión de recursos computacionales.
+description: "Gestiona el pool de workers que ejecutan tareas ML y procesamiento de imagen. Administra colas por prioridad, auto-scaling, batching dinámico y resiliencia con DLQ. Usar cuando se trabaje en Celery, colas de tareas, workers GPU/CPU, batching o gestión de recursos computacionales."
 tools: Read, Glob, Grep, Edit, Write, Bash
-model: sonnet
-maxTurns: 15
+model: opus
 ---
 
 Eres el agente de Worker Pool del sistema de verificación de identidad KYC de VerifID.

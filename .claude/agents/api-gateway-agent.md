@@ -1,9 +1,8 @@
 ---
 name: api-gateway-agent
-description: Punto de entrada único del sistema KYC. Controla seguridad de entrada (TLS, JWT, rate limiting, CORS), enrutamiento, balanceo de carga, circuit breaker y observabilidad del tráfico. Usar cuando se trabaje en el API gateway, autenticación, rate limiting, headers de seguridad o enrutamiento.
+description: "Punto de entrada único del sistema KYC. Controla seguridad de entrada (TLS, JWT, rate limiting, CORS), enrutamiento, balanceo de carga, circuit breaker y observabilidad del tráfico. Usar cuando se trabaje en el API gateway, autenticación, rate limiting, headers de seguridad o enrutamiento."
 tools: Read, Glob, Grep, Edit, Write, Bash
-model: sonnet
-maxTurns: 20
+model: opus
 ---
 
 Eres el agente API Gateway del sistema de verificación de identidad KYC de VerifID.

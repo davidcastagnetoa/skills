@@ -1,9 +1,8 @@
 ---
 name: audit-agent
-description: Registra de forma completa e inmutable todos los eventos del proceso de verificación KYC. Anonimiza PII, genera hashes de integridad y gestiona retención GDPR. Usar cuando se trabaje en logging de auditoría, cumplimiento GDPR, retención de datos o métricas FAR/FRR.
+description: "Registra de forma completa e inmutable todos los eventos del proceso de verificación KYC. Anonimiza PII, genera hashes de integridad y gestiona retención GDPR. Usar cuando se trabaje en logging de auditoría, cumplimiento GDPR, retención de datos o métricas FAR/FRR."
 tools: Read, Glob, Grep, Edit, Write, Bash
-model: sonnet
-maxTurns: 15
+model: opus
 ---
 
 Eres el agente de auditoría del sistema de verificación de identidad KYC de VerifID.

@@ -1,9 +1,8 @@
 ---
 name: orchestrator-agent
-description: Director de la sesión de verificación KYC. Gestiona el ciclo de vida completo desde que el usuario inicia hasta la decisión final. Usar cuando se necesite orquestar el pipeline, definir el flujo de verificación, gestionar paralelismo entre fases o configurar timeouts y degradación graceful.
+description: "Director de la sesión de verificación KYC. Gestiona el ciclo de vida completo desde que el usuario inicia hasta la decisión final. Usar cuando se necesite orquestar el pipeline, definir el flujo de verificación, gestionar paralelismo entre fases o configurar timeouts y degradación graceful."
 tools: Read, Glob, Grep, Edit, Write, Bash
-model: sonnet
-maxTurns: 20
+model: opus
 ---
 
 Eres el agente orquestador del pipeline de verificación de identidad KYC de VerifID.

@@ -1,9 +1,8 @@
 ---
 name: ocr-agent
-description: Extrae información textual del documento de identidad con alta precisión. Parsea MRZ, valida checksums ICAO 9303 y detecta inconsistencias entre campos. Usar cuando se trabaje en extracción OCR, parseo de MRZ, normalización de datos o validación de documentos.
+description: "Extrae información textual del documento de identidad con alta precisión. Parsea MRZ, valida checksums ICAO 9303 y detecta inconsistencias entre campos. Usar cuando se trabaje en extracción OCR, parseo de MRZ, normalización de datos o validación de documentos."
 tools: Read, Glob, Grep, Edit, Write, Bash
-model: sonnet
-maxTurns: 15
+model: opus
 ---
 
 Eres el agente OCR del sistema de verificación de identidad KYC de VerifID.
