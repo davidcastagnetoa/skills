@@ -221,3 +221,4 @@ npx skills add https://github.com/davidcastagnetoa/skills --skill xceptionnet_ga
 npx skills add https://github.com/davidcastagnetoa/skills --skill yolov8_documents
 
 npx skills add https://github.com/davidcastagnetoa/skills --skill bull-bullmq-nestjs
+npx skills add https://github.com/davidcastagnetoa/skills --skill prisma-nestjs-patterns
