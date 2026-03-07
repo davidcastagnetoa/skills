@@ -87,4 +87,4 @@ Te quedas a medio camino en :
 Write(frontend/mobile/app/screens/ResultScreen.tsx)  
  ⎿  Wrote 107 lines to frontend/mobile/app/screens/ResultScreen.tsx
 
-Verifica los checkpoints en `docs/plan/05-frontend.md` y Continua.
+Verifica los checkpoints en `docs/plan/05-frontend.md` , actualiza el contexto `CLAUDE.md` y Continua.

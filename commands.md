@@ -219,3 +219,5 @@ npx skills add https://github.com/davidcastagnetoa/skills --skill webrtc_media_d
 npx skills add https://github.com/davidcastagnetoa/skills --skill weighted_score_aggregator
 npx skills add https://github.com/davidcastagnetoa/skills --skill xceptionnet_gan_detector
 npx skills add https://github.com/davidcastagnetoa/skills --skill yolov8_documents
+
+npx skills add https://github.com/davidcastagnetoa/skills --skill bull-bullmq-nestjs
