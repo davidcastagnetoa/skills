@@ -222,3 +222,7 @@ npx skills add https://github.com/davidcastagnetoa/skills --skill yolov8_documen
 
 npx skills add https://github.com/davidcastagnetoa/skills --skill bull-bullmq-nestjs
 npx skills add https://github.com/davidcastagnetoa/skills --skill prisma-nestjs-patterns
+
+npx skills add https://github.com/davidcastagnetoa/skills --skill fcm-push-notifications
+npx skills add https://github.com/davidcastagnetoa/skills --skill openapi-swagger-nestjs
+npx skills add https://github.com/davidcastagnetoa/skills --skill expo-router-nativewind
