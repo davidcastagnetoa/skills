@@ -222,7 +222,17 @@ npx skills add https://github.com/davidcastagnetoa/skills --skill yolov8_documen
 
 npx skills add https://github.com/davidcastagnetoa/skills --skill bull-bullmq-nestjs
 npx skills add https://github.com/davidcastagnetoa/skills --skill prisma-nestjs-patterns
-
 npx skills add https://github.com/davidcastagnetoa/skills --skill fcm-push-notifications
 npx skills add https://github.com/davidcastagnetoa/skills --skill openapi-swagger-nestjs
 npx skills add https://github.com/davidcastagnetoa/skills --skill expo-router-nativewind
+
+npx skills add https://github.com/davidcastagnetoa/skills --skill backend-test
+npx skills add https://github.com/davidcastagnetoa/skills --skill express-endpoint
+npx skills add https://github.com/davidcastagnetoa/skills --skill frontend-screen
+npx skills add https://github.com/davidcastagnetoa/skills --skill frontend-service
+npx skills add https://github.com/davidcastagnetoa/skills --skill frontend-test
+npx skills add https://github.com/davidcastagnetoa/skills --skill gcs-upload
+npx skills add https://github.com/davidcastagnetoa/skills --skill pdf-form-fill
+npx skills add https://github.com/davidcastagnetoa/skills --skill prisma-migration
+npx skills add https://github.com/davidcastagnetoa/skills --skill saltra-integration
+npx skills add https://github.com/davidcastagnetoa/skills --skill zod-schema

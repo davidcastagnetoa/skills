@@ -88,3 +88,15 @@ Write(frontend/mobile/app/screens/ResultScreen.tsx)
  ⎿  Wrote 107 lines to frontend/mobile/app/screens/ResultScreen.tsx
 
 Verifica los checkpoints en `docs/plan/05-frontend.md` , actualiza el contexto `CLAUDE.md` y Continua.
+
+---
+
+Antes de continuar, dispones de reglas en .claude/rules/\* quiero que las tengas en cuenta, ademas quiero que ignores archivos , los he agregado a .claudeignore
+
+---
+
+actualiza README.md, pues no tiene comandos para probar el backend, actualizalo y completalo, explica como hacer pruebas en local, ademas dado que ha validaciones pendientes en docs/plan/PENDING_VALIDATIONS.md, tenlo en cuenta
+
+---
+
+Ahora ya puedes continuar con Phase 6 (Hardening). No olvides actualizar tus avances en docs/plan/\*, el contexto CLAUDE.md, el README.md, y las posibles validaciones pendientes en docs/plan/PENDING_VALIDATIONS.md

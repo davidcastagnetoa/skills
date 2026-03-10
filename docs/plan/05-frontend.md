@@ -70,17 +70,17 @@ frontend/
 
 ### Tareas
 
-- [ ] Disenar el flujo de pantallas:
+- [x] Disenar el flujo de pantallas:
   ```
   Welcome → Selfie Capture → Challenges → Document Capture → Processing → Result
   ```
 
-- [ ] Pantalla 1: **Welcome**
+- [x] Pantalla 1: **Welcome**
   - Explicar el proceso al usuario.
   - Solicitar permisos de camara.
   - Boton "Iniciar verificacion".
 
-- [ ] Pantalla 2: **Selfie Capture**
+- [x] Pantalla 2: **Selfie Capture**
   - Ovalo facial en pantalla para guiar al usuario.
   - Feedback en tiempo real:
     - "Acerca tu rostro"
@@ -90,12 +90,12 @@ frontend/
   - Bloquear acceso a galeria — solo camara frontal en vivo.
   - Capturar secuencia de frames (3-5 segundos).
 
-- [ ] Pantalla 3: **Active Challenges**
+- [x] Pantalla 3: **Active Challenges**
   - Mostrar instrucciones de challenge: "Parpadea", "Gira la cabeza a la derecha".
   - Feedback visual de progreso.
   - Timeout si el usuario no responde en 10s.
 
-- [ ] Pantalla 4: **Document Capture**
+- [x] Pantalla 4: **Document Capture**
   - Overlay con marco de documento (tamano DNI/pasaporte).
   - Guia visual para alinear el documento.
   - Deteccion automatica de bordes del documento.
@@ -103,19 +103,20 @@ frontend/
   - Feedback: "Acerca el documento", "Evita reflejos", "Mantente estable".
   - Solo camara trasera.
 
-- [ ] Pantalla 5: **Processing**
+- [x] Pantalla 5: **Processing**
   - Indicador de progreso por fase del pipeline.
   - Animacion de "verificando...".
   - Polling o WebSocket para recibir resultado.
 
-- [ ] Pantalla 6: **Result**
+- [x] Pantalla 6: **Result**
   - VERIFIED: check verde, mensaje de exito.
   - REJECTED: X roja, motivo legible.
   - MANUAL_REVIEW: reloj, "Tu verificacion esta en revision".
   - Opcion de reintentar si fue rechazado por calidad de imagen.
 
-### Checkpoint 5.2
+### Checkpoint 5.2 ✅ COMPLETADO
 > Resultado esperado: Flujo completo navegable con mockups/wireframes aprobados.
+> Completado: 6 pantallas + ErrorScreen + AppNavigator + App.tsx entry point.
 
 ---
 
@@ -125,27 +126,28 @@ frontend/
 
 ### Tareas
 
-- [ ] Implementar acceso a camara frontal con react-native-camera o expo-camera:
+- [x] Implementar acceso a camara frontal con react-native-camera o expo-camera:
   - Solo camara frontal, no galeria.
   - Configurar resolucion minima 640x480.
   - Deshabilitar flash.
 
-- [ ] Implementar deteccion de rostro on-device:
+- [x] Implementar deteccion de rostro on-device:
   - MediaPipe Face Detection via TFLite o react-native-mlkit.
   - Verificar que hay exactamente 1 rostro en el frame.
   - Verificar que el rostro esta dentro del ovalo guia.
 
-- [ ] Implementar captura de secuencia de frames:
+- [x] Implementar captura de secuencia de frames:
   - Capturar 1 frame cada 200ms durante 3-5 segundos.
   - Almacenar frames en memoria (no en disco).
   - Enviar como array de base64 al backend.
 
-- [ ] Implementar device fingerprinting:
+- [x] Implementar device fingerprinting:
   - Recopilar: modelo de dispositivo, OS version, app version, screen size.
   - Hash SHA256 del fingerprint.
 
-### Checkpoint 5.3
+### Checkpoint 5.3 ✅ COMPLETADO
 > Resultado esperado: La app captura selfie en vivo con deteccion de rostro en tiempo real. Solo se puede usar la camara, no la galeria.
+> Completado: SelfieCapture.tsx + useCamera hook + useFaceDetection hook + FaceOval component + deviceFingerprint service.
 
 ---
 
@@ -153,23 +155,24 @@ frontend/
 
 ### Tareas
 
-- [ ] Implementar captura de documento con camara trasera:
+- [x] Implementar captura de documento con camara trasera:
   - Overlay con marco de tamano documento.
   - Auto-focus habilitado.
   - Flash opcional (LED del telefono).
 
-- [ ] Implementar deteccion de bordes del documento on-device:
+- [x] Implementar deteccion de bordes del documento on-device:
   - OpenCV.js o libreria nativa para deteccion de contornos.
   - Captura automatica cuando los 4 bordes son detectados.
   - Feedback visual en tiempo real.
 
-- [ ] Implementar validacion basica de calidad on-device:
+- [x] Implementar validacion basica de calidad on-device:
   - Blur detection.
   - Brillo minimo/maximo.
   - Resolucion minima.
 
-### Checkpoint 5.4
+### Checkpoint 5.4 ✅ COMPLETADO
 > Resultado esperado: La app captura el documento con guia visual y deteccion de bordes. Rechaza capturas borrosas o mal alineadas antes de enviar al backend.
+> Completado: DocumentCapture.tsx + DocumentGuide component + imageProcessing.ts utils.
 
 ---
 
@@ -177,7 +180,7 @@ frontend/
 
 ### Tareas
 
-- [ ] Implementar servicio API en el frontend:
+- [x] Implementar servicio API en el frontend:
   ```typescript
   class VerificationAPI {
     async startVerification(data: {
@@ -193,20 +196,21 @@ frontend/
   }
   ```
 
-- [ ] Implementar polling o WebSocket para resultado en tiempo real.
+- [x] Implementar polling o WebSocket para resultado en tiempo real.
 
-- [ ] Implementar manejo de errores:
+- [x] Implementar manejo de errores:
   - Timeout (mostrar "Intenta de nuevo").
   - Error de red (mostrar "Sin conexion").
   - Rate limit (mostrar "Demasiados intentos, espera X minutos").
 
-- [ ] Implementar reintento inteligente:
+- [x] Implementar reintento inteligente:
   - Si rechazo por calidad de imagen → volver a captura con feedback especifico.
   - Si rechazo por liveness → volver a challenges.
   - Si rechazo definitivo → mostrar resultado final.
 
-### Checkpoint 5.5
+### Checkpoint 5.5 ✅ COMPLETADO
 > Resultado esperado: La app envia datos al backend, muestra progreso y resultado. Reintentos funcionan correctamente.
+> Completado: api.ts service + useVerification hook + ProcessingScreen polling + ResultScreen reintentos + ErrorScreen.
 
 ---
 
@@ -216,29 +220,30 @@ frontend/
 
 ### Tareas
 
-- [ ] Implementar captura de selfie con WebRTC:
+- [x] Implementar captura de selfie con WebRTC:
   - `navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' } })`.
   - Bloquear seleccion de archivo (no `<input type="file">`).
   - Misma logica de deteccion de rostro con MediaPipe.js.
 
-- [ ] Implementar captura de documento con WebRTC:
+- [x] Implementar captura de documento con WebRTC:
   - Camara trasera si disponible, frontal como fallback.
   - Overlay de guia.
 
-- [ ] Adaptar el flujo de UX para web (responsive).
+- [x] Adaptar el flujo de UX para web (responsive).
 
-### Checkpoint 5.6
+### Checkpoint 5.6 ✅ COMPLETADO
 > Resultado esperado: Version web funcional con captura de selfie y documento via WebRTC.
+> Completado: React + Vite + React Router app con 6 paginas, WebRTC camera hook, API service, CSS responsive.
 
 ---
 
 ## Criterios de Completitud de Fase 5
 
-- [ ] App movil (React Native) con flujo completo de verificacion
-- [ ] Captura de selfie: solo camara en vivo, deteccion de rostro on-device
-- [ ] Captura de documento: overlay guia, deteccion de bordes, auto-captura
-- [ ] Challenges activos (parpadeo, giro) funcionan en la app
-- [ ] Integracion con backend funcional (envio, polling, resultado)
-- [ ] Manejo de errores y reintentos
-- [ ] Version web con WebRTC funcional
-- [ ] UX validada con usuarios de prueba
+- [x] App movil (React Native) con flujo completo de verificacion
+- [x] Captura de selfie: solo camara en vivo, deteccion de rostro on-device
+- [x] Captura de documento: overlay guia, deteccion de bordes, auto-captura
+- [x] Challenges activos (parpadeo, giro) funcionan en la app
+- [x] Integracion con backend funcional (envio, polling, resultado)
+- [x] Manejo de errores y reintentos
+- [x] Version web con WebRTC funcional
+- [ ] UX validada con usuarios de prueba (Pendiente - requiere testing real)

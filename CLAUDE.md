@@ -181,7 +181,7 @@ Capas adicionales de verificación:
 ## 9. Estructura del Repositorio
 
 ```
-identity-verification/
+verifid/
 ├── backend/
 │   ├── api/                  # Endpoints FastAPI
 │   ├── modules/
@@ -194,16 +194,47 @@ identity-verification/
 │   ├── models/               # Modelos ML (pesos, configs)
 │   └── tests/
 ├── frontend/
-│   ├── mobile/               # App React Native / Flutter
-│   └── web/                  # Versión web (si aplica)
+│   ├── mobile/               # App React Native (Expo ~52)
+│   │   ├── App.tsx           # Entry point
+│   │   ├── app/
+│   │   │   ├── types.ts      # Tipos compartidos
+│   │   │   ├── navigation/AppNavigator.tsx
+│   │   │   ├── screens/      # 7 pantallas (Welcome, SelfieCapture, ActiveChallenges, DocumentCapture, Processing, Result, Error)
+│   │   │   ├── components/   # 6 componentes (FaceOval, FeedbackMessage, ChallengePrompt, DocumentGuide, ProgressIndicator, CameraOverlay)
+│   │   │   ├── hooks/        # 4 hooks (useCamera, useFaceDetection, useVerification, useDeviceInfo)
+│   │   │   ├── services/     # api.ts, deviceFingerprint.ts
+│   │   │   └── utils/        # imageProcessing.ts, permissions.ts
+│   │   ├── package.json
+│   │   └── app.json
+│   └── web/                  # App React (Vite + WebRTC)
+│       ├── src/
+│       │   ├── App.tsx       # Router con 6 rutas
+│       │   ├── pages/        # 6 páginas (Welcome, SelfieCapture, Challenges, DocumentCapture, Processing, Result)
+│       │   ├── hooks/        # useWebRTCCamera
+│       │   ├── services/     # api.ts
+│       │   └── types.ts
+│       ├── index.html
+│       └── package.json
 ├── infra/
 │   ├── docker/
 │   └── k8s/
 ├── docs/
+│   └── plan/                 # Planes de implementación por fase (00-06)
 ├── CLAUDE.md
 ├── Agents.md
 └── Skills.md
 ```
+
+### 9.1 Estado de Implementación por Fase
+
+| Fase | Nombre | Estado |
+|------|--------|--------|
+| 1 | Foundation | ✅ Completada |
+| 2 | Core ML Pipeline | ✅ Completada |
+| 3 | Pipeline Integration | ✅ Completada |
+| 4 | Production Infra | ✅ Completada |
+| 5 | Frontend (Mobile + Web) | ✅ Completada |
+| 6 | Hardening | Pendiente |
 
 ---
 
